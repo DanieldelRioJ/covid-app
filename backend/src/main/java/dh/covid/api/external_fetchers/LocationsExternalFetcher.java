@@ -1,6 +1,6 @@
 package dh.covid.api.external_fetchers;
 
-import dh.covid.api.models.locations.LocationData;
+import dh.covid.api.models.external.locations.LocationData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

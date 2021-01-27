@@ -1,91 +1,77 @@
-package dh.covid.api.models.country;
+package dh.covid.api.models.internal.vo;
 
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvCustomBindByName;
-import com.opencsv.bean.CsvCustomBindByPosition;
 import dh.covid.api.utils.LocalDateConverter;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class VaccinationData {
-    @CsvBindByName(column = "location")
-    private String countryName;
+@Entity
+@Table(name = "vaccination_series")
+public class VaccinationSeries {
 
-    @CsvBindByName(column = "iso_code")
-    private String countryISO;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @CsvCustomBindByName(column = "date", converter = LocalDateConverter.class)
-    private LocalDate date;
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
 
-    @CsvBindByName(column = "total_vaccinations")
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    @Column(name = "total_vaccinations")
     private Long totalVaccionations;
 
-    @CsvBindByName(column = "people_vaccinated")
+    @Column(name = "people_vaccinated")
     private Long peopleVaccinated;
 
-    @CsvBindByName(column = "people_fully_vaccinated")
+    @Column(name = "people_fully_vaccinated")
     private Long peopleFullyVaccinated;
 
-    @CsvBindByName(column = "daily_vaccinations_raw")
+    @Column(name = "daily_vaccinations_raw")
     private Long dailyVaccinationsRaw;
 
-    @CsvBindByName(column = "daily_vaccinations")
+    @Column(name = "daily_vaccinations")
     private Long dailyVaccionations;
 
-    @CsvBindByName(column = "total_vaccinations_per_hundred")
+    @Column(name = "total_vaccinations_per_hundred")
     private Double totalVaccinationsPerHundred;
 
-    @CsvBindByName(column = "people_vaccinated_per_hundred")
+    @Column(name = "people_vaccinated_per_hundred")
     private Double peopleVaccinatedPerHundred;
 
-    @CsvBindByName(column = "people_fully_vaccinated_per_hundred")
+    @Column(name = "people_fully_vaccinated_per_hundred")
     private Double fullyVaccinatedPerHundred;
 
-    @CsvBindByName(column = "daily_vaccinations_per_million")
+    @Column(name = "daily_vaccinations_per_million")
     private Long dailyVaccionationsPerMillion;
 
-    public VaccinationData(){
-
+    public Integer getId() {
+        return id;
     }
 
-    public VaccinationData(LocalDate date, Long totalVaccionations, Long peopleVaccinated, Long peopleFullyVaccinated,
-                           Long dailyVaccinationsRaw, Long dailyVaccionations, Double totalVaccinationsPerHundred,
-                           Double peopleVaccinatedPerHundred, Double fullyVaccinatedPerHundred, Long dailyVaccionationsPerMillion) {
-        this.date = date;
-        this.totalVaccionations = totalVaccionations;
-        this.peopleVaccinated = peopleVaccinated;
-        this.peopleFullyVaccinated = peopleFullyVaccinated;
-        this.dailyVaccinationsRaw = dailyVaccinationsRaw;
-        this.dailyVaccionations = dailyVaccionations;
-        this.totalVaccinationsPerHundred = totalVaccinationsPerHundred;
-        this.peopleVaccinatedPerHundred = peopleVaccinatedPerHundred;
-        this.fullyVaccinatedPerHundred = fullyVaccinatedPerHundred;
-        this.dailyVaccionationsPerMillion = dailyVaccionationsPerMillion;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
-    public String getCountryISO() {
-        return countryISO;
-    }
-
-    public void setCountryISO(String countryISO) {
-        this.countryISO = countryISO;
-    }
-
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

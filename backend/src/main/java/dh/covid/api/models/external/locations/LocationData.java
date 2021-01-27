@@ -1,7 +1,7 @@
-package dh.covid.api.models.locations;
+package dh.covid.api.models.external.locations;
 
 import com.opencsv.bean.CsvBindByName;
-import dh.covid.api.models.country.VaccinationData;
+import dh.covid.api.models.external.vaccinations.VaccinationData;
 
 public class LocationData {
 

@@ -2,14 +2,13 @@ package dh.covid.api.controllers;
 
 import dh.covid.api.external_fetchers.LocationsExternalFetcher;
 import dh.covid.api.external_fetchers.VaccinationsExternalFetcher;
-import dh.covid.api.models.country.VaccinationData;
-import dh.covid.api.models.locations.LocationData;
+import dh.covid.api.models.external.vaccinations.VaccinationData;
+import dh.covid.api.models.external.locations.LocationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
