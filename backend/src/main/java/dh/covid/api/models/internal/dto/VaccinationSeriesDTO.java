@@ -1,88 +1,44 @@
-package dh.covid.api.models.external.vaccinations;
+package dh.covid.api.models.internal.dto;
 
-import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvCustomBindByName;
-import dh.covid.api.utils.LocalDateConverter;
+import javax.persistence.*;
+import java.util.Date;
 
-import java.time.LocalDate;
+public class VaccinationSeriesDTO {
 
-public class VaccinationData {
-    @CsvBindByName(column = "location")
-    private String countryName;
-
-    @CsvBindByName(column = "iso_code")
-    private String countryISO;
-
-    @CsvCustomBindByName(column = "date", converter = LocalDateConverter.class)
-    private LocalDate date;
-
-    @CsvBindByName(column = "total_vaccinations")
+    private Integer id;
+    private CountryDTO country;
+    private Date date;
     private Long totalVaccionations;
-
-    @CsvBindByName(column = "people_vaccinated")
     private Long peopleVaccinated;
-
-    @CsvBindByName(column = "people_fully_vaccinated")
     private Long peopleFullyVaccinated;
-
-    @CsvBindByName(column = "daily_vaccinations_raw")
     private Long dailyVaccinationsRaw;
-
-    @CsvBindByName(column = "daily_vaccinations")
     private Long dailyVaccionations;
-
-    @CsvBindByName(column = "total_vaccinations_per_hundred")
     private Double totalVaccinationsPerHundred;
-
-    @CsvBindByName(column = "people_vaccinated_per_hundred")
     private Double peopleVaccinatedPerHundred;
-
-    @CsvBindByName(column = "people_fully_vaccinated_per_hundred")
     private Double fullyVaccinatedPerHundred;
-
-    @CsvBindByName(column = "daily_vaccinations_per_million")
     private Long dailyVaccionationsPerMillion;
 
-    public VaccinationData(){
-
+    public Integer getId() {
+        return id;
     }
 
-    public VaccinationData(LocalDate date, Long totalVaccionations, Long peopleVaccinated, Long peopleFullyVaccinated,
-                           Long dailyVaccinationsRaw, Long dailyVaccionations, Double totalVaccinationsPerHundred,
-                           Double peopleVaccinatedPerHundred, Double fullyVaccinatedPerHundred, Long dailyVaccionationsPerMillion) {
-        this.date = date;
-        this.totalVaccionations = totalVaccionations;
-        this.peopleVaccinated = peopleVaccinated;
-        this.peopleFullyVaccinated = peopleFullyVaccinated;
-        this.dailyVaccinationsRaw = dailyVaccinationsRaw;
-        this.dailyVaccionations = dailyVaccionations;
-        this.totalVaccinationsPerHundred = totalVaccinationsPerHundred;
-        this.peopleVaccinatedPerHundred = peopleVaccinatedPerHundred;
-        this.fullyVaccinatedPerHundred = fullyVaccinatedPerHundred;
-        this.dailyVaccionationsPerMillion = dailyVaccionationsPerMillion;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public CountryDTO getCountry() {
+        return country;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry(CountryDTO country) {
+        this.country = country;
     }
 
-    public String getCountryISO() {
-        return countryISO;
-    }
-
-    public void setCountryISO(String countryISO) {
-        this.countryISO = countryISO;
-    }
-
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

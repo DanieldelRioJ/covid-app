@@ -1,6 +1,6 @@
 package dh.covid.api.external_fetchers;
 
-import dh.covid.api.models.external.vaccinations.VaccinationData;
+import dh.covid.api.models.external.vaccinations.VaccinationCSV;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +15,7 @@ public class VaccinationsExternalFetcher extends ExternalFetcher {
     private String url;
     private HttpClient client = HttpClientBuilder.create().build();
 
-    public List<VaccinationData> getItems() throws Exception {
-        return this.getItems(url, VaccinationData.class);
+    public List<VaccinationCSV> getItems() throws Exception {
+        return this.getItems(url, VaccinationCSV.class);
     }
 }

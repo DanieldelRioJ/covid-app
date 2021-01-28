@@ -2,8 +2,8 @@ package dh.covid.api.controllers;
 
 import dh.covid.api.external_fetchers.LocationsExternalFetcher;
 import dh.covid.api.external_fetchers.VaccinationsExternalFetcher;
-import dh.covid.api.models.external.vaccinations.VaccinationData;
-import dh.covid.api.models.external.locations.LocationData;
+import dh.covid.api.models.external.vaccinations.VaccinationCSV;
+import dh.covid.api.models.external.locations.LocationCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,12 +21,12 @@ public class TestController {
     private LocationsExternalFetcher locationsExternalFetcher;
 
     @GetMapping("/testVaccines")
-    private ResponseEntity<List<VaccinationData>> testVaccines() throws Exception {
+    private ResponseEntity<List<VaccinationCSV>> testVaccines() throws Exception {
         return ResponseEntity.ok(vaccinationsExternalFetcher.getItems());
     }
 
     @GetMapping("/testLocations")
-    private ResponseEntity<List<LocationData>> testLocation() throws Exception {
+    private ResponseEntity<List<LocationCSV>> testLocation() throws Exception {
         return ResponseEntity.ok(locationsExternalFetcher.getItems());
     }
 

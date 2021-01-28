@@ -1,32 +1,17 @@
-package dh.covid.api.models.internal.vo;
+package dh.covid.api.models.internal.dto;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table
-public class Country {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CountryDTO {
+
     private Integer id;
-
-    @Column(name = "iso_code")
     private String isoCode;
-
     private String name;
-
-    @ManyToMany
-    private List<Vaccine> vaccines;
-
-    @Column(name = "last_observation_date")
-    @Temporal(TemporalType.DATE)
+    private List<VaccineDTO> vaccines;
     private Date lastObservationDate;
-
-    @Column(name = "source_name")
     private String sourceName;
-
-    @Column(name = "source_website")
     private String sourceWebsite;
 
     public Integer getId() {
@@ -53,11 +38,11 @@ public class Country {
         this.name = name;
     }
 
-    public List<Vaccine> getVaccines() {
+    public List<VaccineDTO> getVaccines() {
         return vaccines;
     }
 
-    public void setVaccines(List<Vaccine> vaccines) {
+    public void setVaccines(List<VaccineDTO> vaccines) {
         this.vaccines = vaccines;
     }
 
