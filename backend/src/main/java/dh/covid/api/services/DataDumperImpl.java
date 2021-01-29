@@ -14,8 +14,10 @@ import dh.covid.api.models.internal.vo.Vaccine;
 import dh.covid.api.utils.Pair;
 import dh.covid.api.utils.Trio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +50,8 @@ public class DataDumperImpl implements DataDumper {
         //countryRepository.saveAll(countries);
     }
 
-    @Override
+    /*Each hour, fetch CSV files and stores converted data into DB*/
+    @Scheduled(fixedRate = 3600000)
     public void autoReload() throws Exception {
         List<LocationCSV> locations = locationsExternalFetcher.getItems();
         List<VaccinationCSV> vaccinationsCSV = vaccinationsExternalFetcher.getItems();
