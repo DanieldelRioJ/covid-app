@@ -2,6 +2,7 @@ package dh.covid.api.controllers;
 
 import dh.covid.api.external_fetchers.LocationsExternalFetcher;
 import dh.covid.api.models.external.locations.LocationCSV;
+import dh.covid.api.models.internal.dto.CountryDTO;
 import dh.covid.api.services.CountryService;
 import dh.covid.api.services.DataDumper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class CountryController {
     @GetMapping("countries")
     public ResponseEntity<?> getCountry() throws Exception {
         dataDumper.autoReload();
-        return ResponseEntity.ok(countryService.getCountries());
 
+        List<CountryDTO> countries = countryService.getCountries();
+        return ResponseEntity.ok(countries);
     }
 }

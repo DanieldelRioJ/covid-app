@@ -16,13 +16,15 @@ public class LocationCSV {
     @CsvBindByName(column = "iso_code")
     private String isoCode;
 
-    private VaccinationCSV vaccinationData;
+    @CsvBindByName(column = "source_name")
+    private String sourceName; //country name
+
 
     @CsvCustomBindByName(column = "last_observation_date", converter = LocalDateConverter.class)
     private LocalDate lastObservationDate;
 
-    @CsvBindByName(column = "source_name")
-    private String sourceName; //country name
+    @CsvBindByName(column = "vaccines")
+    private String vaccines; //country name
 
     @CsvBindByName(column = "source_website")
     private String sourceWebsite; //country name
@@ -50,22 +52,6 @@ public class LocationCSV {
         this.isoCode = isoCode;
     }
 
-    public VaccinationCSV getCountryVaccionationData() {
-        return vaccinationData;
-    }
-
-    public void setCountryVaccionationData(VaccinationCSV vaccinationData) {
-        this.vaccinationData = vaccinationData;
-    }
-
-    public VaccinationCSV getVaccinationData() {
-        return vaccinationData;
-    }
-
-    public void setVaccinationData(VaccinationCSV vaccinationData) {
-        this.vaccinationData = vaccinationData;
-    }
-
     public LocalDate getLastObservationDate() {
         return lastObservationDate;
     }
@@ -88,5 +74,13 @@ public class LocationCSV {
 
     public void setSourceWebsite(String sourceWebsite) {
         this.sourceWebsite = sourceWebsite;
+    }
+
+    public String getVaccines() {
+        return vaccines;
+    }
+
+    public void setVaccines(String vaccines) {
+        this.vaccines = vaccines;
     }
 }

@@ -2,8 +2,8 @@ package dh.covid.api.services;
 
 import dh.covid.api.mappers.CountryMapper;
 import dh.covid.api.models.internal.dto.CountryDTO;
+import dh.covid.api.models.internal.vo.Country;
 import dh.covid.api.repositories.CountryRepository;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +38,10 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public void saveAll(List<CountryDTO> country) {
-        this.countryRepository.saveAll(countryMapper.toCountry(country));
+    public List<CountryDTO> saveAll(List<CountryDTO> country) {
+        List<Country> countryList = countryMapper.toCountry(country);
+        countryList = this.countryRepository.saveAll(countryList);
+        return countryMapper.toCountryDTO(countryList);
     }
 
     @Override

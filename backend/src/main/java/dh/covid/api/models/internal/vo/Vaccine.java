@@ -12,11 +12,7 @@ public class Vaccine {
     private Integer id;
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "country_vaccine",
-            joinColumns = @JoinColumn(name = "vaccine_id"),
-            inverseJoinColumns = @JoinColumn(name = "country_id"))
+    @ManyToMany(mappedBy = "vaccines")
     private List<Country> countries;
 
     public Integer getId() {

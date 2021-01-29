@@ -9,6 +9,6 @@ public interface CountryService {
     List<CountryDTO> getCountries();
     CountryDTO getCountryById(String id);
     void save(CountryDTO country);
-    void saveAll(List<CountryDTO> country);
+    List<CountryDTO> saveAll(List<CountryDTO> country);
     void deleteAll();
 }

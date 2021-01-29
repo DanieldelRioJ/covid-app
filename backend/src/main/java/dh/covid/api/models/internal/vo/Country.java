@@ -16,7 +16,11 @@ public class Country {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.DETACH)
+    @JoinTable(
+            name = "country_vaccine",
+            joinColumns = @JoinColumn(name = "country_id"),
+            inverseJoinColumns = @JoinColumn(name = "vaccine_id"))
     private List<Vaccine> vaccines;
 
     @Column(name = "last_observation_date")
@@ -29,6 +33,8 @@ public class Country {
     @Column(name = "source_website")
     private String sourceWebsite;
 
+    @OneToMany(mappedBy = "country")
+    private List<VaccinationSeries> vaccineSeries;
     public Integer getId() {
         return id;
     }
@@ -83,5 +89,13 @@ public class Country {
 
     public void setSourceWebsite(String sourceWebsite) {
         this.sourceWebsite = sourceWebsite;
+    }
+
+    public List<VaccinationSeries> getVaccineSeries() {
+        return vaccineSeries;
+    }
+
+    public void setVaccineSeries(List<VaccinationSeries> vaccineSeries) {
+        this.vaccineSeries = vaccineSeries;
     }
 }

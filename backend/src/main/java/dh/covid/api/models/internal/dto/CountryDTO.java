@@ -1,5 +1,7 @@
 package dh.covid.api.models.internal.dto;
 
+import dh.covid.api.models.internal.vo.VaccinationSeries;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +15,7 @@ public class CountryDTO {
     private Date lastObservationDate;
     private String sourceName;
     private String sourceWebsite;
-
+    private List<VaccinationSeriesDTO> vaccineSeries;
     public Integer getId() {
         return id;
     }
@@ -68,5 +70,13 @@ public class CountryDTO {
 
     public void setSourceWebsite(String sourceWebsite) {
         this.sourceWebsite = sourceWebsite;
+    }
+
+    public List<VaccinationSeriesDTO> getVaccineSeries() {
+        return vaccineSeries;
+    }
+
+    public void setVaccineSeries(List<VaccinationSeriesDTO> vaccineSeries) {
+        this.vaccineSeries = vaccineSeries;
     }
 }
