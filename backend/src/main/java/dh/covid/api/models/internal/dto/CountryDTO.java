@@ -1,11 +1,14 @@
 package dh.covid.api.models.internal.dto;
 
 import dh.covid.api.models.internal.vo.VaccinationSeries;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@ApiModel("Country")
 public class CountryDTO {
 
     private Integer id;

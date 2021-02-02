@@ -10,10 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class CountryController {
 
     @Autowired
@@ -23,7 +24,7 @@ public class CountryController {
     private DataDumper dataDumper;
 
     @GetMapping("countries")
-    public ResponseEntity<?> getCountry() throws Exception {
+    public ResponseEntity<List<CountryDTO>> getCountry() throws Exception {
         List<CountryDTO> countries = countryService.getCountries();
         return ResponseEntity.ok(countries);
     }
