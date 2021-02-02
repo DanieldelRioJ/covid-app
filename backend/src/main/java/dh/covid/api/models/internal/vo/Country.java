@@ -1,5 +1,7 @@
 package dh.covid.api.models.internal.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,7 @@ public class Country {
             name = "country_vaccine",
             joinColumns = @JoinColumn(name = "country_id"),
             inverseJoinColumns = @JoinColumn(name = "vaccine_id"))
+    @JsonIgnoreProperties(value = "countries")
     private List<Vaccine> vaccines;
 
     @Column(name = "last_observation_date")
@@ -33,6 +36,7 @@ public class Country {
     private String sourceWebsite;
 
     @OneToMany(mappedBy = "country", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnoreProperties(value = "country")
     private List<VaccinationSeries> vaccineSeries;
     public Integer getId() {
         return id;

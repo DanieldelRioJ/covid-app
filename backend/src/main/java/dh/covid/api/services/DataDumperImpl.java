@@ -67,21 +67,6 @@ public class DataDumperImpl implements DataDumper {
         countryService.deleteAll();
         vaccineService.deleteAll();
         vaccinationSeriesService.deleteAll();
-        /*List<VaccineDTO> vaccines = vaccineService.saveAll(trio.u);
-        Map<String, VaccineDTO> vaccineRegister = new HashMap<>();
-        for (VaccineDTO vaccine: vaccines){
-            vaccineRegister.put(vaccine.getName(), vaccine);
-        }
-
-        trio.t.forEach(countryDTO -> {
-            List<VaccineDTO> vacAuxList = countryDTO.getVaccines();
-            if(vacAuxList != null){
-                vacAuxList.forEach(vaccine -> {
-                    VaccineDTO vac = vaccineRegister.get(vaccine.getName());
-                    vaccine.setId(vac.getId());
-                });
-            }
-        });*/
         try{
             countryService.saveAll(trio.t);
         }catch (LazyInitializationException e){

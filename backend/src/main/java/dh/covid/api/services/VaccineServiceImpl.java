@@ -20,8 +20,8 @@ public class VaccineServiceImpl implements VaccineService {
 
 
     @Override
-    public List<VaccineDTO> getVaccines() {
-        return null;
+    public List<Vaccine> getVaccines() {
+        return vaccineRepository.findAll();
     }
 
     @Override

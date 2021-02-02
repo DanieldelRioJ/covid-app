@@ -1,21 +1,35 @@
 package dh.covid.api.models.internal.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@ApiModel(value = "VaccinationSeries", description = "Data of 1 day vaccination of 1 country")
 public class VaccinationSeriesDTO {
 
     private Long id;
     private CountryDTO country;
+    @ApiModelProperty(value = "Date of the series")
     private Date date;
+    @ApiModelProperty(value = "Total dosis administrated. Not equal to the number of people vaccinated")
     private Long totalVaccionations;
+    @ApiModelProperty(value = "Number of people that received at least 1 dosis")
     private Long peopleVaccinated;
+    @ApiModelProperty(value = "Number of people that received both dosis (if required)")
     private Long peopleFullyVaccinated;
+    @ApiModelProperty(value = "Dosis administrated in this day. Not recommended (use dailyVaccinations instead)")
     private Long dailyVaccinationsRaw;
+    @ApiModelProperty(value = "Dosis administrated taken into account not reported data and adjusting laking reports.")
     private Long dailyVaccionations;
+    @ApiModelProperty(value = "total_vaccinations per 100 people in the total population of the country.")
     private Double totalVaccinationsPerHundred;
+    @ApiModelProperty(value = "Percentage of people that received at least 1 dosis.")
     private Double peopleVaccinatedPerHundred;
+    @ApiModelProperty(value = "Percentage of people that are fully vaccinated.")
     private Double fullyVaccinatedPerHundred;
+    @ApiModelProperty(value = "daily_vaccinations per 1,000,000 people in the total population of the country.")
     private Long dailyVaccionationsPerMillion;
 
     public Long getId() {

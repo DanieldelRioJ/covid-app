@@ -5,6 +5,7 @@ import dh.covid.api.external_fetchers.VaccinationsExternalFetcher;
 import dh.covid.api.models.external.vaccinations.VaccinationCSV;
 import dh.covid.api.models.external.locations.LocationCSV;
 import dh.covid.api.services.DataDumper;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class TestController {
     private DataDumper dataDumper;
 
     @GetMapping("/reload")
+    @ApiOperation("Fetch data from online csvs and updates DB. ONLY FOR DEV USE")
     private ResponseEntity<?> testVaccines() throws Exception {
 
         dataDumper.autoReload();

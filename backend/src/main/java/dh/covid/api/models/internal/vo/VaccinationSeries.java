@@ -1,5 +1,6 @@
 package dh.covid.api.models.internal.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import dh.covid.api.utils.LocalDateConverter;
@@ -17,6 +18,7 @@ public class VaccinationSeries {
 
     @ManyToOne
     @JoinColumn(name = "country_id")
+    @JsonIgnoreProperties(value = "vaccineSeries")
     private Country country;
 
     @Column

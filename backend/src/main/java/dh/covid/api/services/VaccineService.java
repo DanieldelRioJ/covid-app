@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface VaccineService {
 
-    List<VaccineDTO> getVaccines();
+    List<Vaccine> getVaccines();
     VaccineDTO getVaccineById(Integer id);
     void save(VaccineDTO country);
     List<VaccineDTO> saveAll(List<VaccineDTO> vaccineDTOList);
