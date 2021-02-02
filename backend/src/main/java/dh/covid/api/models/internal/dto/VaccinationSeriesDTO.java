@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class VaccinationSeriesDTO {
 
-    private Integer id;
+    private Long id;
     private CountryDTO country;
     private Date date;
     private Long totalVaccionations;
@@ -18,11 +18,11 @@ public class VaccinationSeriesDTO {
     private Double fullyVaccinatedPerHundred;
     private Long dailyVaccionationsPerMillion;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

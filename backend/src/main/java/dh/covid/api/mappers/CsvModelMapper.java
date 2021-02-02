@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 @Component
@@ -96,16 +98,20 @@ public class CsvModelMapper {
         }).collect(Collectors.toList());
 
         //Map VaccinationSeriesDTO list.
+        AtomicLong i = new AtomicLong();
+        i.set(1);
         List<VaccinationSeriesDTO> vaccinationSeriesDTOList = vaccinationCSVList.stream().map(vaccinationCSV -> {
             VaccinationSeriesDTO vaccinationSeriesDTO = convertVaccinationsCSVToVaccionationSeriesDTO(vaccinationCSV);
+            vaccinationSeriesDTO.setId(i.getAndIncrement());
             CountryDTO country = countryRegister.get(vaccinationCSV.getCountryName());
             if(country != null){
-                List<VaccinationSeriesDTO> vaccinationAddedList = country.getVaccineSeries();
+                vaccinationSeriesDTO.setCountry(country);
+                /*List<VaccinationSeriesDTO> vaccinationAddedList = country.getVaccineSeries();
                 if(vaccinationAddedList == null ){
                     vaccinationAddedList = new ArrayList<>();
                 }
                 vaccinationAddedList.add(vaccinationSeriesDTO);
-                country.setVaccineSeries(vaccinationAddedList);
+                country.setVaccineSeries(vaccinationAddedList);*/
             }
             return vaccinationSeriesDTO;
         }).collect(Collectors.toList());

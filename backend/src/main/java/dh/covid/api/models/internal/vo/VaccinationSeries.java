@@ -13,8 +13,7 @@ import java.util.Date;
 public class VaccinationSeries {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -51,11 +50,11 @@ public class VaccinationSeries {
     @Column(name = "daily_vaccinations_per_million")
     private Long dailyVaccionationsPerMillion;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

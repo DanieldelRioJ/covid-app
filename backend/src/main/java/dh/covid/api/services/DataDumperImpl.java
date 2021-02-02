@@ -13,10 +13,12 @@ import dh.covid.api.models.internal.vo.VaccinationSeries;
 import dh.covid.api.models.internal.vo.Vaccine;
 import dh.covid.api.utils.Pair;
 import dh.covid.api.utils.Trio;
+import org.hibernate.LazyInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +36,8 @@ public class DataDumperImpl implements DataDumper {
     private LocationsExternalFetcher locationsExternalFetcher;
     @Autowired
     private VaccinationsExternalFetcher vaccinationsExternalFetcher;
+    @Autowired
+    private VaccinationSeriesService vaccinationSeriesService;
 
     @Autowired
     private CsvModelMapper csvModelMapper;
@@ -52,6 +56,7 @@ public class DataDumperImpl implements DataDumper {
 
     /*Each hour, fetch CSV files and stores converted data into DB*/
     @Scheduled(fixedRate = 3600000)
+    //@Transactional
     public void autoReload() throws Exception {
         List<LocationCSV> locations = locationsExternalFetcher.getItems();
         List<VaccinationCSV> vaccinationsCSV = vaccinationsExternalFetcher.getItems();
@@ -61,7 +66,8 @@ public class DataDumperImpl implements DataDumper {
 
         countryService.deleteAll();
         vaccineService.deleteAll();
-        List<VaccineDTO> vaccines = vaccineService.saveAll(trio.u);
+        vaccinationSeriesService.deleteAll();
+        /*List<VaccineDTO> vaccines = vaccineService.saveAll(trio.u);
         Map<String, VaccineDTO> vaccineRegister = new HashMap<>();
         for (VaccineDTO vaccine: vaccines){
             vaccineRegister.put(vaccine.getName(), vaccine);
@@ -75,7 +81,17 @@ public class DataDumperImpl implements DataDumper {
                     vaccine.setId(vac.getId());
                 });
             }
-        });
-        countryService.saveAll(trio.t);
+        });*/
+        try{
+            countryService.saveAll(trio.t);
+        }catch (LazyInitializationException e){
+            System.out.println("Litle exception!");
+        }
+
+        try{
+            vaccinationSeriesService.saveAll(trio.v);
+        }catch (LazyInitializationException e){
+            System.out.println("Litle exception!");
+        }
     }
 }

@@ -8,7 +8,6 @@ import java.util.List;
 @Table
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "iso_code")
@@ -16,7 +15,7 @@ public class Country {
 
     private String name;
 
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "country_vaccine",
             joinColumns = @JoinColumn(name = "country_id"),
@@ -33,7 +32,7 @@ public class Country {
     @Column(name = "source_website")
     private String sourceWebsite;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     private List<VaccinationSeries> vaccineSeries;
     public Integer getId() {
         return id;

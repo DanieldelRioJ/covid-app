@@ -24,8 +24,6 @@ public class CountryController {
 
     @GetMapping("countries")
     public ResponseEntity<?> getCountry() throws Exception {
-        dataDumper.autoReload();
-
         List<CountryDTO> countries = countryService.getCountries();
         return ResponseEntity.ok(countries);
     }

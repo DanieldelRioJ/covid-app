@@ -24,7 +24,12 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public List<CountryDTO> getCountries(){
-        return countryMapper.toCountryDTO(countryRepository.findAll());
+        List<Country> countries = countryRepository.findAll();
+        countries.forEach(country -> {
+            country.getVaccineSeries().forEach(vaccinationSeries -> {vaccinationSeries.setCountry(null);});
+            country.getVaccines().forEach(vaccine -> {vaccine.setCountries(null);});
+        });
+        return countryMapper.toCountryDTO(countries);
     }
 
     @Override
