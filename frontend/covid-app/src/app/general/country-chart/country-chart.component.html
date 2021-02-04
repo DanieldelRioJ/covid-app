@@ -9,11 +9,9 @@
   [yAxis]="yAxis"
   [xAxisLabel]="xAxisLabel"
   [yAxisLabel]="yAxisLabel"
-  [timeline]="timeline"
-  [results]="multi"
+  [results]="countries | country:'peopleVaccinatedPerHundred'"
   (select)="onSelect($event)"
   (activate)="onActivate($event)"
   (deactivate)="onDeactivate($event)"
-  autoScale="true"
 >
 </ngx-charts-line-chart>

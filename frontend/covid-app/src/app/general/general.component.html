@@ -10,12 +10,14 @@
       <app-general-header class="header-info" [world] = "world"></app-general-header>
       <mat-card style="margin-top: 1.5rem">
         <h2>Country vaccinations</h2>
-        <app-country-chart class="chart"></app-country-chart>
+        <app-country-chart class="chart" [countries]="countries"></app-country-chart>
       </mat-card>
 
     </div>
     <div class="col-md-4 col-12">
-      <app-country-table [countries]="countries"></app-country-table>
+      <mat-card>
+        <app-country-table [countries]="countries"></app-country-table>
+      </mat-card>
       <mat-card style="margin-top: 1.5rem">
         <h2>Countries per vaccine</h2>
         <app-vaccine-chart class="vaccine-chart"></app-vaccine-chart>

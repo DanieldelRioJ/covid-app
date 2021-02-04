@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {multi} from "./data";
+import {Country} from "../../model/country";
 
 @Component({
   selector: 'app-country-chart',
@@ -8,13 +9,11 @@ import {multi} from "./data";
 })
 export class CountryChartComponent implements OnInit {
 
+  @Input() countries: Country[];
+  multi = multi;
   constructor() {
-    Object.assign(this, { multi });
 
   }
-
-
-  multi: any[];
 
   // options
   legend: boolean = true;

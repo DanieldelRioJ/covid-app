@@ -42,4 +42,9 @@ export class VaccineChartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  format(data:any):string{
+    console.log(data)
+    return `<h4 style="margin: 0; padding:0">${data.data.name}</h4><span style="margin: 0; padding:0">${data.value} countries</span>`;
+  }
+
 }

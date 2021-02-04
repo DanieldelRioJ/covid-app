@@ -21,6 +21,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { CountryChartComponent } from './general/country-chart/country-chart.component';
 import { VaccineChartComponent } from './general/vaccine-chart/vaccine-chart.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { VaccineChartComponent } from './general/vaccine-chart/vaccine-chart.com
     GeneralHeaderComponent,
     CountryTableComponent,
     CountryChartComponent,
-    VaccineChartComponent
+    VaccineChartComponent,
+    CountryPipe
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { VaccineChartComponent } from './general/vaccine-chart/vaccine-chart.com
     FontAwesomeModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule,
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
