@@ -10,7 +10,7 @@ import java.util.List;
 public interface CountryService {
 
     Page<Country> getCountries(Pageable pageable);
-    Page<Country> getTopCountries(Integer top, Pageable pageable);
+    Page<Country> getTopCountries(Integer top);
     Country getCountryById(Integer id);
     void save(CountryDTO country);
     List<CountryDTO> saveAll(List<CountryDTO> country);

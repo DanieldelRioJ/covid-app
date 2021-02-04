@@ -1,0 +1,38 @@
+.div-container{
+  display: flex;
+  justify-content: space-around;
+
+  .title{
+    margin: 0;
+    color:grey;
+    margin-bottom: 0.7rem;
+  }
+
+  .subcaption {
+    margin-top: 0.4rem;
+    .positive{
+      color: #01ab6d;
+      font-weight: 500;
+    }
+  }
+
+  .main-property{
+    .value{
+      font-size: 3rem;
+      font-weight: bolder;
+      margin: 0;
+    }
+    .title{
+    }
+  }
+
+  .secondary-property{
+    .value{
+      font-size: 2rem;
+      font-weight: bolder;
+      margin: 0;
+    }
+    .title{
+    }
+  }
+}

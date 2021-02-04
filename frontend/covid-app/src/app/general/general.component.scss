@@ -1,0 +1,31 @@
+.general-container{
+  padding: 2rem;
+
+  .chart{
+    min-height: 500px;
+  }
+
+  .vaccine-chart{
+    min-height: 300px;
+  }
+
+  .search-country{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    background-color: white;
+    box-shadow: 0px 0px 6px 1px #00000054;
+    max-width: 700px;
+    margin-bottom: 1rem;
+    input{
+      width: 100%;
+      &:focus{
+        outline: none;
+      }
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      background-color: unset;
+    }
+  }
+}

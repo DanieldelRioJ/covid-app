@@ -39,7 +39,7 @@ public class CountryController {
     ) throws Exception {
         Page<Country> countries;
         if(top != null){
-            countries = countryService.getTopCountries(top, pageable);
+            countries = countryService.getTopCountries(top);
         }else{
             countries = countryService.getCountries(pageable);
         }
@@ -47,8 +47,7 @@ public class CountryController {
     }
 
     @GetMapping("countries/{identifier}")
-    public ResponseEntity<Country> getCountry(@ApiParam("Id or name of the country") @PathVariable String identifier,
-                                              @RequestParam String orderBy, @RequestParam Integer limit) throws Exception {
+    public ResponseEntity<Country> getCountry(@ApiParam("Id or name of the country") @PathVariable String identifier) throws Exception {
         Country country = null;
         try{
             Integer id = Integer.valueOf(identifier);

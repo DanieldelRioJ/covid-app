@@ -1,0 +1,30 @@
+<div class="container-fluid general-container">
+  <form>
+    <div class="search-country">
+      <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+      <input style="border: none;" placeholder="Search your country"/>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-8 col-12">
+      <app-general-header class="header-info" [world] = "world"></app-general-header>
+      <mat-card style="margin-top: 1.5rem">
+        <h2>Country vaccinations</h2>
+        <app-country-chart class="chart"></app-country-chart>
+      </mat-card>
+
+    </div>
+    <div class="col-md-4 col-12">
+      <app-country-table [countries]="countries"></app-country-table>
+      <mat-card style="margin-top: 1.5rem">
+        <h2>Countries per vaccine</h2>
+        <app-vaccine-chart class="vaccine-chart"></app-vaccine-chart>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+    </div>
+  </div>
+</div>
