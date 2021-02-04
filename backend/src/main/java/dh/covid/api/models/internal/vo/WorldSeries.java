@@ -1,25 +1,21 @@
 package dh.covid.api.models.internal.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvCustomBindByName;
-import dh.covid.api.utils.LocalDateConverter;
+import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "vaccination_series")
-public class VaccinationSeries {
-
+@Table(name = "world_series")
+public class WorldSeries {
     @Id
-    private Long id;
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    @JsonIgnoreProperties(value = {"vaccineSeries", "lastVaccineSeries"})
-    private Country country;
+    @Column(name = "iso_code")
+    private String isoCode;
+    private String name;
 
     @Column
     @Temporal(TemporalType.DATE)
@@ -52,20 +48,28 @@ public class VaccinationSeries {
     @Column(name = "daily_vaccinations_per_million")
     private Long dailyVaccionationsPerMillion;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Country getCountry() {
-        return country;
+    public String getIsoCode() {
+        return isoCode;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setIsoCode(String isoCode) {
+        this.isoCode = isoCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getDate() {

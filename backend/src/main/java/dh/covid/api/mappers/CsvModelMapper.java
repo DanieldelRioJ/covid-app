@@ -5,6 +5,7 @@ import dh.covid.api.models.external.vaccinations.VaccinationCSV;
 import dh.covid.api.models.internal.dto.CountryDTO;
 import dh.covid.api.models.internal.dto.VaccinationSeriesDTO;
 import dh.covid.api.models.internal.dto.VaccineDTO;
+import dh.covid.api.models.internal.dto.WorldSeriesDTO;
 import dh.covid.api.models.internal.vo.Vaccine;
 import dh.covid.api.utils.Pair;
 import dh.covid.api.utils.Trio;
@@ -50,6 +51,7 @@ public class CsvModelMapper {
         vaccinationSeriesDTO.setDate(date);
         vaccinationSeriesDTO.setPeopleVaccinated(vaccinationCSV.getPeopleVaccinated());
         vaccinationSeriesDTO.setPeopleFullyVaccinated(vaccinationCSV.getPeopleFullyVaccinated());
+        vaccinationSeriesDTO.setFullyVaccinatedPerHundred(vaccinationCSV.getFullyVaccinatedPerHundred());
         vaccinationSeriesDTO.setPeopleVaccinatedPerHundred(vaccinationCSV.getPeopleVaccinatedPerHundred());
         vaccinationSeriesDTO.setTotalVaccionations(vaccinationCSV.getTotalVaccionations());
         vaccinationSeriesDTO.setTotalVaccinationsPerHundred(vaccinationCSV.getTotalVaccinationsPerHundred());
@@ -118,4 +120,39 @@ public class CsvModelMapper {
         Trio<List<CountryDTO>, List<VaccineDTO>, List<VaccinationSeriesDTO>> trio = new Trio(countryDTOList, new ArrayList<>(vaccineRegister.values()),vaccinationSeriesDTOList);
         return trio;
     }
+
+    public List<WorldSeriesDTO> convertVaccinationsCSVTOWorldLocationSeries(List<VaccinationCSV> worldVaccinationSeriesCSV) {
+        AtomicInteger i = new AtomicInteger();
+        i.set(1);
+        List<WorldSeriesDTO> worldSeriesDTOList = worldVaccinationSeriesCSV.stream().map(worldVaccinationSerie -> {
+            WorldSeriesDTO wsDTO = convertVaccinationsCSVTOWorldLocationSeries(worldVaccinationSerie);
+            wsDTO.setId(i.getAndIncrement());
+            return wsDTO;
+        }).collect(Collectors.toList());
+
+        return worldSeriesDTOList;
+    }
+
+    public WorldSeriesDTO convertVaccinationsCSVTOWorldLocationSeries(VaccinationCSV worldVaccinationSeriesCSV) {
+        WorldSeriesDTO worldSeriesDTO = new WorldSeriesDTO();
+        worldSeriesDTO.setIsoCode(worldVaccinationSeriesCSV.getCountryISO());
+        worldSeriesDTO.setName(worldVaccinationSeriesCSV.getCountryName());
+        worldSeriesDTO.setDailyVaccinationsRaw(worldVaccinationSeriesCSV.getDailyVaccinationsRaw());
+        worldSeriesDTO.setDailyVaccionations(worldVaccinationSeriesCSV.getDailyVaccionations());
+        worldSeriesDTO.setDailyVaccionationsPerMillion(worldVaccinationSeriesCSV.getDailyVaccionationsPerMillion());
+        worldSeriesDTO.setFullyVaccinatedPerHundred(worldVaccinationSeriesCSV.getFullyVaccinatedPerHundred());
+
+        Date date = Date.from(worldVaccinationSeriesCSV.getDate().atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant());
+        worldSeriesDTO.setDate(date);
+        worldSeriesDTO.setPeopleVaccinated(worldVaccinationSeriesCSV.getPeopleVaccinated());
+        worldSeriesDTO.setPeopleFullyVaccinated(worldVaccinationSeriesCSV.getPeopleFullyVaccinated());
+        worldSeriesDTO.setPeopleVaccinatedPerHundred(worldVaccinationSeriesCSV.getPeopleVaccinatedPerHundred());
+        worldSeriesDTO.setTotalVaccionations(worldVaccinationSeriesCSV.getTotalVaccionations());
+        worldSeriesDTO.setTotalVaccinationsPerHundred(worldVaccinationSeriesCSV.getTotalVaccinationsPerHundred());
+
+        return worldSeriesDTO;
+    }
+
 }

@@ -15,7 +15,7 @@ public class Vaccine {
     private String name;
 
     @ManyToMany(mappedBy = "vaccines")
-    @JsonIgnoreProperties(value = {"vaccines", "vaccineSeries"})
+    @JsonIgnoreProperties(value = {"vaccines", "vaccineSeries", "lastVaccineSeries"})
     private List<Country> countries;
 
     @Transient

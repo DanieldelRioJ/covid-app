@@ -1,6 +1,7 @@
 package dh.covid.api.models.internal.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -38,6 +39,11 @@ public class Country {
     @OneToMany(mappedBy = "country", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnoreProperties(value = "country")
     private List<VaccinationSeries> vaccineSeries;
+
+    @ManyToOne
+    @JoinFormula("(SELECT vs.id FROM vaccination_series vs WHERE vs.country_id = id ORDER BY vs.date DESC LIMIT 1)")
+    @JsonIgnoreProperties(value = "country")
+    private VaccinationSeries lastVaccineSeries;
     public Integer getId() {
         return id;
     }
@@ -100,5 +106,13 @@ public class Country {
 
     public void setVaccineSeries(List<VaccinationSeries> vaccineSeries) {
         this.vaccineSeries = vaccineSeries;
+    }
+
+    public VaccinationSeries getLastVaccineSeries() {
+        return lastVaccineSeries;
+    }
+
+    public void setLastVaccineSeries(VaccinationSeries lastVaccineSeries) {
+        this.lastVaccineSeries = lastVaccineSeries;
     }
 }

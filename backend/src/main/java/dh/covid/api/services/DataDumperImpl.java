@@ -8,6 +8,7 @@ import dh.covid.api.models.external.vaccinations.VaccinationCSV;
 import dh.covid.api.models.internal.dto.CountryDTO;
 import dh.covid.api.models.internal.dto.VaccinationSeriesDTO;
 import dh.covid.api.models.internal.dto.VaccineDTO;
+import dh.covid.api.models.internal.dto.WorldSeriesDTO;
 import dh.covid.api.models.internal.vo.Country;
 import dh.covid.api.models.internal.vo.VaccinationSeries;
 import dh.covid.api.models.internal.vo.Vaccine;
@@ -23,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class DataDumperImpl implements DataDumper {
@@ -31,6 +33,8 @@ public class DataDumperImpl implements DataDumper {
     private CountryService countryService;
     @Autowired
     private VaccineService vaccineService;
+    @Autowired
+    private WorldSeriesService worldSeriesService;
 
     @Autowired
     private LocationsExternalFetcher locationsExternalFetcher;
@@ -60,12 +64,14 @@ public class DataDumperImpl implements DataDumper {
     public void autoReload() throws Exception {
         List<LocationCSV> locations = locationsExternalFetcher.getItems();
         List<VaccinationCSV> vaccinationsCSV = vaccinationsExternalFetcher.getItems();
-
-
+        List<VaccinationCSV> worldVaccinationSeriesCSV = vaccinationsCSV.stream().filter( v -> v.getCountryName().equals("World")).collect(Collectors.toList());
+        List<WorldSeriesDTO> worldSeriesDTOList = csvModelMapper.convertVaccinationsCSVTOWorldLocationSeries(worldVaccinationSeriesCSV);
         Trio<List<CountryDTO>, List<VaccineDTO>, List<VaccinationSeriesDTO>> trio = csvModelMapper.convertLocationCSVToCountryDTO(locations, vaccinationsCSV);
 
         countryService.deleteAll();
         vaccineService.deleteAll();
+        worldSeriesService.deleteAll();
+        worldSeriesService.saveAll(worldSeriesDTOList);
         vaccinationSeriesService.deleteAll();
         try{
             countryService.saveAll(trio.t);

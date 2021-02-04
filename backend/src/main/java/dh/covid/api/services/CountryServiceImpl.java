@@ -5,6 +5,8 @@ import dh.covid.api.models.internal.dto.CountryDTO;
 import dh.covid.api.models.internal.vo.Country;
 import dh.covid.api.repositories.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +25,14 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public List<Country> getCountries(){
-        List<Country> countries = countryRepository.findAll();
+    public Page<Country> getCountries(Pageable pageable){
+        Page<Country> countries = countryRepository.findAll(pageable);
+        return countries;
+    }
+
+    @Override
+    public Page<Country> getTopCountries(Integer top, Pageable pageable) {
+        Page<Country> countries = countryRepository.findTopCountries(top, pageable);
         return countries;
     }
 
@@ -51,5 +59,10 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public void deleteAll() {
         this.countryRepository.deleteAll();
+    }
+
+    @Override
+    public Country getCountryByName(String name) {
+        return countryRepository.findByName(name);
     }
 }
