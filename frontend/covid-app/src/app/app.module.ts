@@ -24,6 +24,7 @@ import { VaccineChartComponent } from './general/vaccine-chart/vaccine-chart.com
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
 import { MomentModule } from 'angular2-moment';
+import { VaccinePipe } from './custom-pipes/chart-pipes/vaccine.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MomentModule } from 'angular2-moment';
     CountryTableComponent,
     CountryChartComponent,
     VaccineChartComponent,
-    CountryPipe
+    CountryPipe,
+    VaccinePipe
   ],
   imports: [
     BrowserModule,

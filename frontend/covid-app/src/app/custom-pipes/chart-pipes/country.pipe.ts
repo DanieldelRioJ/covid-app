@@ -27,8 +27,6 @@ export class CountryPipe implements PipeTransform {
         series: series
       }
     });
-    debugger;
-    console.log(result)
     return result;
   }
 
