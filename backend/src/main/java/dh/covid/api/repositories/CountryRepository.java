@@ -13,6 +13,6 @@ import java.util.List;
 public interface CountryRepository extends JpaRepository<Country, Integer> {
     Country findByNameIgnoreCase(String name);
 
-    @Query("SELECT c FROM Country c ORDER BY c.lastVaccineSeries.peopleVaccinatedPerHundred DESC NULLS LAST")
+    @Query("SELECT c FROM Country c WHERE  c.isoCode <> '' ORDER BY c.lastVaccineSeries.peopleVaccinatedPerHundred DESC NULLS LAST")
     Page<Country> findTopCountries(Pageable pageable);
 }

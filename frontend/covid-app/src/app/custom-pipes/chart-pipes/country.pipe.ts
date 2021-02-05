@@ -15,7 +15,7 @@ export class CountryPipe implements PipeTransform {
     if(list == null){
       return []
     }
-    let result = list.map(country => {
+    let result = list.filter(country => country != null).map(country => {
       let series = country.vaccineSeries.filter(vaccineSerie => vaccineSerie[property] != null).map(vaccineSerie => {
         return {
           name: new Date(vaccineSerie.date),

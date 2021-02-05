@@ -1,16 +1,27 @@
 
 <mat-card>
-  <h2>World Data</h2>
+  <div style="display: flex">
+    <fa-icon *ngIf="isoCode == null" [icon]="worldIcon" size="2x"></fa-icon>
+    <img *ngIf="isoCode != null" class="flag" src="/assets/flags/images/{{isoCode | isoCode | lowercase}}.svg" alt="">
+    <h2 style="padding-left: 5px;">{{headerText}}</h2>
+  </div>
   <div class="div-container">
     <div class="main-property">
-      <p class="title" matTooltip="People vaccinated (at least 1 dosis) per hundred" matTooltipPosition="above">Vaccinated</p>
-      <h3 class="value">{{world?.peopleVaccinatedPerHundred}}%</h3>
-      <p class="subcaption"><span class="positive">+0.25%</span> than yesterday</p>
-    </div>
+      <div>
+        <p class="title" matTooltip="People vaccinated (at least 1 dosis) per hundred" matTooltipPosition="above">Vaccinated</p>
+        <h3 class="value">{{todaySerie?.peopleVaccinatedPerHundred}}%</h3>
+        <p class="subcaption"><span class="positive">+{{todaySerie?.peopleVaccinatedPerHundred - yesterdaySerie?.peopleVaccinatedPerHundred | number : '1.2-3'}}%</span> than yesterday</p>
+      </div>
+      </div>
     <div class="secondary-property">
       <p class="title" matTooltip="People fully vaccinated (2 dosis) per hundred" matTooltipPosition="above">Fully vaccinated</p>
-      <h3 class="value">{{world?.fullyVaccinatedPerHundred}}%</h3>
-      <p class="subcaption"><span class="positive">+0.25%</span> than yesterday</p>
+      <h3 class="value">{{todaySerie?.fullyVaccinatedPerHundred}}%</h3>
+      <p class="subcaption"><span class="positive">+{{todaySerie?.fullyVaccinatedPerHundred - yesterdaySerie?.fullyVaccinatedPerHundred | number : '1.2-3'}}%</span> than yesterday</p>
+    </div>
+    <div class="secondary-property">
+      <p class="title" matTooltip="People fully vaccinated (2 dosis) per hundred" matTooltipPosition="above">Vaccinated today</p>
+      <h3 class="value">{{todaySerie?.dailyVaccionations}}</h3>
+      <p class="subcaption"><span class="positive" [ngClass]="{'negative' : todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations < 0}">{{todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations}}</span> than yesterday</p>
     </div>
   </div>
 </mat-card>

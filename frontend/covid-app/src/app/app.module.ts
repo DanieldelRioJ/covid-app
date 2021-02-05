@@ -23,8 +23,10 @@ import { CountryChartComponent } from './general/country-chart/country-chart.com
 import { VaccineChartComponent } from './general/vaccine-chart/vaccine-chart.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
-import { MomentModule } from 'angular2-moment';
 import { VaccinePipe } from './custom-pipes/chart-pipes/vaccine.pipe';
+import { IsoCodePipe } from './custom-pipes/isoCode/iso-code.pipe';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { VaccinePipe } from './custom-pipes/chart-pipes/vaccine.pipe';
     CountryChartComponent,
     VaccineChartComponent,
     CountryPipe,
-    VaccinePipe
+    VaccinePipe,
+    IsoCodePipe
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { VaccinePipe } from './custom-pipes/chart-pipes/vaccine.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MomentModule
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

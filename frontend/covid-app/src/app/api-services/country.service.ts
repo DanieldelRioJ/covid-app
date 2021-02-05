@@ -23,7 +23,7 @@ export class CountryService {
     return this.http.get<Page<Country[]>>(`${this.baseUrl}/countries`, {params});
   }
 
-  getCountry(identifier: string|number): Observable<Country[]>{
-    return this.http.get<Country[]>(`${this.baseUrl}/countries/${identifier}`);
+  getCountry(identifier: string|number): Observable<Country>{
+    return this.http.get<Country>(`${this.baseUrl}/countries/${identifier}`);
   }
 }

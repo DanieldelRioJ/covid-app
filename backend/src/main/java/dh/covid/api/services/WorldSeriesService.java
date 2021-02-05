@@ -17,4 +17,5 @@ public interface WorldSeriesService {
     void deleteAll();
 
     WorldSeries getLastSerie();
+    WorldSeries getYesterdayData();
 }

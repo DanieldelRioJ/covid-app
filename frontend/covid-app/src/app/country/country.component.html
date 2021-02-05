@@ -1,1 +1,35 @@
-<p>country works!</p>
+<div class="country-container container-fluid">
+  Home / {{country.name}}
+  <div class="row">
+    <div class="col-sm-9 col-12">
+      <app-general-header [headerText]="country?.name" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
+      <mat-card class="chart-container">
+          <app-country-chart class="chart" [countries]="[country]"></app-country-chart>
+      </mat-card>
+    </div>
+    <div class="col-sm-3 col-12">
+      <mat-card>
+        <h2>Full data</h2>
+        <div class="detail-list">
+          <div class="detail-item">
+            <p>Total vaccinations</p>
+            <p>{{country?.lastVaccineSeries.totalVaccionations}}</p>
+          </div>
+          <div class="detail-item">
+            <p>People vaccinated</p>
+            <p>{{country?.lastVaccineSeries.peopleVaccinated}}</p>
+          </div>
+          <div class="detail-item">
+            <p>People fully vaccinated</p>
+            <p>{{country?.lastVaccineSeries.peopleFullyVaccinated}}</p>
+          </div>
+        </div>
+        <hr style="margin: 0; margin-bottom: 5px">
+        Vaccines used
+        <ul>
+          <li *ngFor="let vaccines of country?.vaccines">{{vaccines.name}}</li>
+        </ul>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -40,3 +40,42 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+/*Legend horizontal scroll*/
+ul.legend-labels.horizontal-legend{
+  overflow-x: auto;
+}
+
+/* Custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.mat-row{
+  &:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.05);
+  }
+  &:nth-child(odd):not(:hover){
+    background-color: rgba(0,0,0,0.02);
+  }
+
+}

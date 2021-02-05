@@ -1,3 +1,11 @@
+@import "src/variables";
+
+.flag{
+  height: 30px;
+  float: left;
+  border-radius: 5px;
+}
+
 .div-container{
   display: flex;
   justify-content: space-around;
@@ -10,16 +18,20 @@
 
   .subcaption {
     margin-top: 0.4rem;
-    .positive{
-      color: #01ab6d;
+    .positive:not(.negative){
+      color: $text-positive-value;
+      font-weight: 500;
+    }
+    .negative{
+      color: $text-negative-value;
       font-weight: 500;
     }
   }
-
   .main-property{
     .value{
       font-size: 3rem;
       font-weight: bolder;
+      margin: 0;
       margin: 0;
     }
     .title{

@@ -10,5 +10,5 @@ export interface Country{
   sourceName: string;
   sourceWebsite: string;
   vaccineSeries: VaccinationSeries[];
-  lastVaccineSeries: VaccinationSeries[];
+  lastVaccineSeries: VaccinationSeries;
 }

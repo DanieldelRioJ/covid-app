@@ -7,6 +7,8 @@ import {WorldSeries} from "../model/world-series";
 import {WorldService} from "../api-services/world.service";
 import {Country} from "../model/country";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-general',
@@ -16,13 +18,19 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export class GeneralComponent implements OnInit {
   faSearch = faSearch;
   vaccines: Vaccine[];
-  world: WorldSeries;
+  todayWorldSerie: WorldSeries;
+  yesterdayWorldSerie: WorldSeries;
   countries: Country[];
+  searchCountryFormGroup: FormGroup;
 
   constructor(private vaccineService: VaccineService,
               private countryService: CountryService,
-              private worldService: WorldService) {
-
+              private worldService: WorldService,
+              private fb: FormBuilder,
+              private router: Router) {
+    this.searchCountryFormGroup = fb.group({
+      countryName: ['', Validators.required]
+    })
 
   }
 
@@ -36,9 +44,17 @@ export class GeneralComponent implements OnInit {
       countrySub.unsubscribe();
     });
     let worldSub = this.worldService.getWorldLastSerie().subscribe(world => {
-      this.world = world;
+      this.todayWorldSerie = world;
       worldSub.unsubscribe();
-    })
+    });
+    let yesterdayWorldSub = this.worldService.getWorldYesterdaySerie().subscribe(world => {
+      this.yesterdayWorldSerie = world;
+      yesterdayWorldSub.unsubscribe();
+    });
   }
 
+  searchCountry() {
+    let countryName = this.searchCountryFormGroup.value.countryName;
+    this.router.navigateByUrl(`/countries/${countryName}`);
+  }
 }

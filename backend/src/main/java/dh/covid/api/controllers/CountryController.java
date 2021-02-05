@@ -71,4 +71,11 @@ public class CountryController {
 
         return ResponseEntity.ok(this.worldSeriesService.getLastSerie());
     }
+
+    @GetMapping("world/yesterday")
+    @ApiOperation("Get yesterday data of the world vaccination series")
+    public ResponseEntity<WorldSeries> getWorldYesterdaySeries(){
+
+        return ResponseEntity.ok(this.worldSeriesService.getYesterdayData());
+    }
 }

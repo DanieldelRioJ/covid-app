@@ -43,4 +43,9 @@ public class WorldSeriesServiceImpl implements WorldSeriesService{
     public WorldSeries getLastSerie() {
         return worldVaccinationSeriesRepository.findAll(PageRequest.of(0,1, Sort.by("date").descending())).getContent().get(0);
     }
+
+    @Override
+    public WorldSeries getYesterdayData() {
+        return worldVaccinationSeriesRepository.findAll(PageRequest.of(1,1, Sort.by("date").descending())).getContent().get(0);
+    }
 }

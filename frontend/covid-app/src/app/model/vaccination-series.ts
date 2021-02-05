@@ -4,7 +4,7 @@ export interface VaccinationSeries{
   id: number;
   country: Country;
   date: Date;
-  totalVaccinations: number;
+  totalVaccionations: number;
   peopleVaccinated: number;
   peopleFullyVaccinated: number;
   dailyVaccinationsRaw: number;

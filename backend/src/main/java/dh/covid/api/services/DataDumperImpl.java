@@ -12,6 +12,7 @@ import dh.covid.api.models.internal.dto.WorldSeriesDTO;
 import dh.covid.api.models.internal.vo.Country;
 import dh.covid.api.models.internal.vo.VaccinationSeries;
 import dh.covid.api.models.internal.vo.Vaccine;
+import dh.covid.api.utils.BlackList;
 import dh.covid.api.utils.Pair;
 import dh.covid.api.utils.Trio;
 import org.hibernate.LazyInitializationException;
@@ -62,7 +63,7 @@ public class DataDumperImpl implements DataDumper {
     @Scheduled(fixedRate = 3600000)
     //@Transactional
     public void autoReload() throws Exception {
-        List<LocationCSV> locations = locationsExternalFetcher.getItems();
+        List<LocationCSV> locations = locationsExternalFetcher.getItems().stream().filter(location -> !BlackList.inBlackList(location.getLocation())).collect(Collectors.toList());
         List<VaccinationCSV> vaccinationsCSV = vaccinationsExternalFetcher.getItems();
         List<VaccinationCSV> worldVaccinationSeriesCSV = vaccinationsCSV.stream().filter( v -> v.getCountryName().equals("World")).collect(Collectors.toList());
         List<WorldSeriesDTO> worldSeriesDTOList = csvModelMapper.convertVaccinationsCSVTOWorldLocationSeries(worldVaccinationSeriesCSV);

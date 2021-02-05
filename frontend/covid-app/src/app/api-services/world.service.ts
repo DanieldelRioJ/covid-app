@@ -21,4 +21,8 @@ export class WorldService {
   getWorldLastSerie():Observable<WorldSeries>{
     return this.http.get<WorldSeries>(`${this.baseUrl}/world/now`);
   }
+
+  getWorldYesterdaySerie():Observable<WorldSeries>{
+    return this.http.get<WorldSeries>(`${this.baseUrl}/world/yesterday`);
+  }
 }

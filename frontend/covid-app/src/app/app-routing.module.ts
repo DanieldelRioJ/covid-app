@@ -8,7 +8,7 @@ import {CountryComponent} from "./country/country.component";
 const routes: Routes = [
   {path: '404', component: NotFoundComponent},
   { path: '', component: GeneralComponent, pathMatch: 'full'},
-  { path: 'countries', component: CountryComponent},
+  { path: 'countries/:countryIdentifier', component: CountryComponent},
   { path: '**', redirectTo: '/404'},
 ];
 
