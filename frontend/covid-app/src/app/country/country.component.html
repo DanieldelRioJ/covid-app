@@ -1,5 +1,5 @@
 <div class="country-container container-fluid">
-  <button mat-raised-button class="back-button" routerLink="/"><fa-icon [icon]="faArrowLeft"></fa-icon>Back</button>
+  <button mat-raised-button class="back-button" routerLink="/"><fa-icon [icon]="faArrowLeft" style="margin-right: 0.3rem"></fa-icon>Back</button>
   <div class="row">
     <div class="col-lg-9 col-12">
       <app-general-header [headerText]="country?.name" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
@@ -13,19 +13,19 @@
         <div class="detail-list">
           <div class="detail-item">
             <p>Total vaccinations</p>
-            <p>{{country?.lastVaccineSeries.totalVaccionations}}</p>
+            <p>{{country?.lastVaccineSeries.totalVaccionations | numberFomat}}</p>
           </div>
           <div class="detail-item">
             <p>People vaccinated</p>
-            <p>{{country?.lastVaccineSeries.peopleVaccinated}}</p>
+            <p>{{country?.lastVaccineSeries.peopleVaccinated | numberFomat}}</p>
           </div>
           <div class="detail-item">
             <p>People fully vaccinated</p>
-            <p>{{country?.lastVaccineSeries.peopleFullyVaccinated}}</p>
+            <p>{{country?.lastVaccineSeries.peopleFullyVaccinated | numberFomat}}</p>
           </div>
         </div>
         <hr style="margin: 0; margin-bottom: 5px">
-        Vaccines used
+        <b>Vaccines used:</b>
         <ul>
           <li *ngFor="let vaccines of country?.vaccines">{{vaccines.name}}</li>
         </ul>

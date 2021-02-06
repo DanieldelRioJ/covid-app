@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {multi} from "./data";
 import {Country} from "../../model/country";
+import {MediaMatcher} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-country-chart',
@@ -10,10 +11,25 @@ import {Country} from "../../model/country";
 export class CountryChartComponent implements OnInit {
 
   @Input() countries: Country[];
-  multi = multi;
-  constructor() {
-
+  legendPosition = "right";
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 700px)');
+    if(this.mobileQuery.matches){
+      this.legendPosition = "below";
+    }
+    this._mobileQueryListener = () => {
+      changeDetectorRef.detectChanges();
+      if(this.mobileQuery.matches){
+        this.legendPosition = "below";
+      }else{
+        this.legendPosition = "right";
+      }
+    }
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
+  mobileQuery: MediaQueryList;
+  private _mobileQueryListener: () => void;
 
   // options
   legend: boolean = true;

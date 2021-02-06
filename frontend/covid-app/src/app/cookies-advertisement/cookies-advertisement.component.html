@@ -1,1 +1,7 @@
-<p>cookies-advertisement works!</p>
+<div class="advertisement-container" *ngIf="!closed">
+  <h4 class="title">Cookies policy</h4>
+  <div>
+    <p>If you continue browsing you are accepting our <a routerLink="/policy">privacy and cookies policy</a></p>
+    <div style="margin-right:1rem"><button mat-raised-button (click)="accept()">Acept</button></div>
+  </div>
+</div>

@@ -31,6 +31,7 @@ import { CountrySearchBarComponent } from './general/country-search-bar/country-
 import { FooterComponent } from './footer/footer.component';
 import { CookiesAdvertisementComponent } from './cookies-advertisement/cookies-advertisement.component';
 import { NumberFomatPipe } from './custom-pipes/number-fomat.pipe';
+import { PolicyComponent } from './policy/policy.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NumberFomatPipe } from './custom-pipes/number-fomat.pipe';
     CountrySearchBarComponent,
     FooterComponent,
     CookiesAdvertisementComponent,
-    NumberFomatPipe
+    NumberFomatPipe,
+    PolicyComponent
   ],
   imports: [
     BrowserModule,

@@ -26,8 +26,8 @@
       <fa-icon [icon]="faUserShield" size="2x" style="align-self: center; margin-right: 0.5rem"></fa-icon>
       <div>
         <p class="title" matTooltip="People vaccinated today" matTooltipPosition="above">Vaccinated today</p>
-        <h3 class="value">{{todaySerie?.dailyVaccionations}}</h3>
-        <p class="subcaption" matTooltip="Difference with the previous day"><span class="positive" [ngClass]="{'negative' : todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations < 0}">{{todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations}}</span> than yesterday</p>
+        <h3 class="value">{{todaySerie?.dailyVaccionations | numberFomat}}</h3>
+        <p class="subcaption" matTooltip="Difference with the previous day"><span class="positive" [ngClass]="{'negative' : todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations < 0}">{{todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations | numberFomat}}</span> than yesterday</p>
       </div>
       </div>
   </div>

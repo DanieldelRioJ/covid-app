@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CookiesAdvertisementComponent implements OnInit {
 
-  constructor() { }
+  closed = true;
+
+  constructor() {
+    if(localStorage.getItem('cookies-closed') != 'true'){
+      this.closed = false;
+    }
+  }
 
   ngOnInit(): void {
   }
 
+  accept() {
+    this.closed = true;
+    localStorage.setItem('cookies-closed', 'true');
+  }
 }
