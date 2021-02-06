@@ -9,6 +9,8 @@ import {Country} from "../model/country";
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {map, startWith} from "rxjs/operators";
 
 @Component({
   selector: 'app-general',
@@ -16,7 +18,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./general.component.scss']
 })
 export class GeneralComponent implements OnInit {
-  faSearch = faSearch;
   vaccines: Vaccine[];
   todayWorldSerie: WorldSeries;
   yesterdayWorldSerie: WorldSeries;
@@ -30,7 +31,7 @@ export class GeneralComponent implements OnInit {
               private router: Router) {
     this.searchCountryFormGroup = fb.group({
       countryName: ['', Validators.required]
-    })
+    });
 
   }
 
@@ -51,10 +52,5 @@ export class GeneralComponent implements OnInit {
       this.yesterdayWorldSerie = world;
       yesterdayWorldSub.unsubscribe();
     });
-  }
-
-  searchCountry() {
-    let countryName = this.searchCountryFormGroup.value.countryName;
-    this.router.navigateByUrl(`/countries/${countryName}`);
   }
 }

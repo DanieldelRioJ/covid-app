@@ -1,13 +1,13 @@
 <div class="country-container container-fluid">
-  Home / {{country.name}}
+  <button mat-raised-button class="back-button" routerLink="/"><fa-icon [icon]="faArrowLeft"></fa-icon>Back</button>
   <div class="row">
-    <div class="col-sm-9 col-12">
+    <div class="col-lg-9 col-12">
       <app-general-header [headerText]="country?.name" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
       <mat-card class="chart-container">
           <app-country-chart class="chart" [countries]="[country]"></app-country-chart>
       </mat-card>
     </div>
-    <div class="col-sm-3 col-12">
+    <div class="col-lg-3 col-12">
       <mat-card>
         <h2>Full data</h2>
         <div class="detail-list">
@@ -29,6 +29,9 @@
         <ul>
           <li *ngFor="let vaccines of country?.vaccines">{{vaccines.name}}</li>
         </ul>
+
+        <hr style="margin: 0; margin-bottom: 5px">
+        Source: <a href="{{country?.sourceWebsite}}" target="_blank">{{country?.sourceName}}</a>
       </mat-card>
     </div>
   </div>

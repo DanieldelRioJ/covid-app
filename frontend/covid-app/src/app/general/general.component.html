@@ -1,32 +1,23 @@
 <div class="container-fluid general-container">
-  <form [formGroup]="searchCountryFormGroup" (ngSubmit)="searchCountry()">
-    <div class="search-country">
-      <fa-icon [icon]="faSearch" size="lg"></fa-icon>
-      <input style="border: none;" placeholder="Search your country" matInput formControlName="countryName" [matAutocomplete]="auto"/>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of ['2','3']" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-      <button type="submit" mat-stroked-button color="primary" [disabled]="!searchCountryFormGroup.valid">Search</button>
-    </div>
-  </form>
+  <h1 class="title">Realtime Covid-19 Vaccination Data</h1>
+  <app-country-search-bar class="search-bar"></app-country-search-bar>
   <div class="row">
-    <div class="col-md-8 col-12">
+    <div class="col-lg-8 col-12">
       <app-general-header class="header-info" headerText="World Data" [todaySerie]="todayWorldSerie"
-                          [yesterdaySerie]="yesterdayWorldSerie"></app-general-header>
-      <mat-card style="margin-top: 1.5rem">
-        <h2>Country vaccinations</h2>
+                          [yesterdaySerie]="yesterdayWorldSerie" style="margin-bottom: 1.5rem; display: block;"></app-general-header>
+      <mat-card style="margin-bottom: 1.5rem">
+        <h2>Cov-19 Country vaccinations</h2>
         <app-country-chart class="chart" [countries]="countries"></app-country-chart>
+        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
 
     </div>
-    <div class="col-md-4 col-12">
-      <mat-card>
+    <div class="col-lg-4 col-12">
+      <mat-card  style="margin-bottom: 1.5rem">
         <app-country-table [countries]="countries"></app-country-table>
       </mat-card>
-      <mat-card style="margin-top: 1.5rem">
-        <h2>Countries per vaccine</h2>
+      <mat-card>
+        <h2 matTooltip="Number of countries in which each vaccine is used">Countries per vaccine</h2>
         <app-vaccine-chart class="vaccine-chart" [vaccines]="vaccines"></app-vaccine-chart>
       </mat-card>
     </div>

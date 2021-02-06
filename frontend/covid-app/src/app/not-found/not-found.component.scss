@@ -1,0 +1,31 @@
+img.icon{
+  max-height: 300px;
+}
+
+:host{
+  padding: 2rem;
+  text-align: center;
+}
+
+.container{
+  text-align: center;
+}
+
+.message{
+  margin-top: 2rem;
+  font-weight: bolder;
+  font-size: 2rem;
+  line-height: 50px;
+}
+
+.options{
+  margin-top: 4rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.search-bar{
+  margin: auto;
+  display: block;
+  max-width: 500px;
+}

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CountryService} from "../api-services/country.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Country} from "../model/country";
 import {VaccinationSeries} from "../model/vaccination-series";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-country',
@@ -10,13 +11,17 @@ import {VaccinationSeries} from "../model/vaccination-series";
   styleUrls: ['./country.component.scss']
 })
 export class CountryComponent implements OnInit {
+  //Icons//
+  faArrowLeft = faArrowLeft;
 
   country: Country;
   yesterdayData: VaccinationSeries;
   todayData: VaccinationSeries;
 
+
   constructor(private countryService: CountryService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     route.params.subscribe(parameters => {
       let countryIdentifier = parameters['countryIdentifier'];
       let subscription = countryService.getCountry(countryIdentifier).subscribe(country => {
@@ -24,7 +29,7 @@ export class CountryComponent implements OnInit {
         this.yesterdayData = this.country.vaccineSeries[this.country.vaccineSeries.length - 2];
         this.todayData = this.country.vaccineSeries[this.country.vaccineSeries.length - 1];
       }, error => {
-
+        router.navigateByUrl('/404');
       }, () => {subscription.unsubscribe()});
     })
   }

@@ -1,5 +1,18 @@
 .general-container{
-  padding: 2rem;
+
+  .source{
+    font-size: 0.8rem;
+    text-align: right;
+  }
+
+  .title{
+    font-weight: bolder;
+  }
+
+  .search-bar{
+    display: block;
+    max-width: 500px;
+  }
 
   .chart{
     min-height: 500px;

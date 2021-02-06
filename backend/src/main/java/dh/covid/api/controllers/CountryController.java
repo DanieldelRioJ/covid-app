@@ -46,6 +46,17 @@ public class CountryController {
         return ResponseEntity.ok(countries);
     }
 
+    @GetMapping("country-names")
+    public ResponseEntity<List<Country>> getCountryNames() throws Exception {
+        List<Country> countries = countryService.findAll();
+        countries.stream().forEach(country -> {
+            country.setVaccineSeries(null);
+            country.setVaccines(null);
+            country.setLastVaccineSeries(null);
+        });
+        return ResponseEntity.ok(countries);
+    }
+
     @GetMapping("countries/{identifier}")
     public ResponseEntity<Country> getCountry(@ApiParam("Id or name of the country") @PathVariable String identifier) throws Exception {
         Country country = null;

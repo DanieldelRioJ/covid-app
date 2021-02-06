@@ -14,7 +14,10 @@ public class BlackList {
             "Wales",
             "Scotland",
             "Faeroe Islands",
-            "Greenland"
+            "Greenland",
+            "England",
+            "Northern Cyprus",
+            "Northern Ireland"
     };
 
     public static boolean inBlackList(String countryName){

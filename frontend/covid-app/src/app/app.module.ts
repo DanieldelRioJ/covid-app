@@ -27,6 +27,10 @@ import { VaccinePipe } from './custom-pipes/chart-pipes/vaccine.pipe';
 import { IsoCodePipe } from './custom-pipes/isoCode/iso-code.pipe';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { CountrySearchBarComponent } from './general/country-search-bar/country-search-bar.component';
+import { FooterComponent } from './footer/footer.component';
+import { CookiesAdvertisementComponent } from './cookies-advertisement/cookies-advertisement.component';
+import { NumberFomatPipe } from './custom-pipes/number-fomat.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     VaccineChartComponent,
     CountryPipe,
     VaccinePipe,
-    IsoCodePipe
+    IsoCodePipe,
+    CountrySearchBarComponent,
+    FooterComponent,
+    CookiesAdvertisementComponent,
+    NumberFomatPipe
   ],
   imports: [
     BrowserModule,

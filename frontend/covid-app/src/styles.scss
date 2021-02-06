@@ -79,3 +79,18 @@ ul.legend-labels.horizontal-legend{
   }
 
 }
+
+.general-container, .country-container{
+  padding: 2rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .general-container, .country-container{
+    padding: 0.5rem;
+  }
+
+}

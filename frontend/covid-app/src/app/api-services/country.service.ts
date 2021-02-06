@@ -10,7 +10,6 @@ import {Page} from "../model/pagination/page";
   providedIn: 'root'
 })
 export class CountryService {
-
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
@@ -25,5 +24,9 @@ export class CountryService {
 
   getCountry(identifier: string|number): Observable<Country>{
     return this.http.get<Country>(`${this.baseUrl}/countries/${identifier}`);
+  }
+
+  getCountryNames(): Observable<Country[]>{
+    return this.http.get<Country[]>(`${this.baseUrl}/country-names`);
   }
 }

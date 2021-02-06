@@ -32,6 +32,11 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
+    public List<Country> findAll() {
+        return countryRepository.findAll();
+    }
+
+    @Override
     public Page<Country> getTopCountries(Integer top) {
         Pageable pageable = PageRequest.of(0, top);
         Page<Country> countries = countryRepository.findTopCountries(pageable);
