@@ -1,10 +1,11 @@
 <div class="country-container container-fluid">
   <button mat-raised-button class="back-button" routerLink="/"><fa-icon [icon]="faArrowLeft" style="margin-right: 0.3rem"></fa-icon>Back</button>
   <div class="row">
-    <div class="col-lg-9 col-12">
+    <div class="col-lg-9 col-12" style="margin-bottom: 1rem">
       <app-general-header [headerText]="country?.name" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
-      <mat-card class="chart-container">
-          <app-country-chart class="chart" [countries]="[country]"></app-country-chart>
+      <mat-card style="margin: 1.5rem 0rem">
+        <app-country-chart class="chart" [countries]="[country]"></app-country-chart>
+        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
     </div>
     <div class="col-lg-3 col-12">

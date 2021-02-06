@@ -7,7 +7,7 @@
   </div>
   <div class="div-container">
     <div class="main-property property">
-      <fa-icon [icon]="faSyringe" size="2x" style="align-self: center; margin-right: 0.5rem"></fa-icon>
+      <fa-icon [icon]="faSyringe" size="2x" style="align-self: center; margin-right: 0.5rem" class="hide-mobile"></fa-icon>
       <div class="content">
         <p class="title" matTooltip="People vaccinated (at least 1 dosis) per hundred" matTooltipPosition="above">Vaccinated</p>
         <h3 class="value">{{todaySerie?.peopleVaccinatedPerHundred}}%</h3>
@@ -15,7 +15,7 @@
       </div>
       </div>
     <div class="secondary-property property">
-      <fa-icon [icon]="faShieldVirus" size="2x" style="align-self: center; margin-right: 0.5rem"></fa-icon>
+      <fa-icon [icon]="faShieldVirus" size="2x" style="align-self: center; margin-right: 0.5rem" class="hide-mobile"></fa-icon>
       <div>
         <p class="title" matTooltip="People fully vaccinated (2 dosis) per hundred" matTooltipPosition="above">Fully vaccinated</p>
         <h3 class="value">{{todaySerie?.fullyVaccinatedPerHundred}}%</h3>
