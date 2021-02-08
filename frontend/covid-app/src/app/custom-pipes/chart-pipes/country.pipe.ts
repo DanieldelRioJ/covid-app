@@ -1,10 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Country} from "../../model/country";
+import {TranslateService} from "@ngx-translate/core";
 
 @Pipe({
   name: 'country'
 })
 export class CountryPipe implements PipeTransform {
+
+  constructor(private translateService: TranslateService) {
+  }
 
   transform(country: Country, type?:string): unknown {
     if(country == null) return [];
@@ -15,7 +19,7 @@ export class CountryPipe implements PipeTransform {
     }else if(type == 'daily'){
       props = ['dailyVaccionations']
     }else{
-      props = ['totalVaccinations','peopleVaccinated','peopleFullyVaccinated']
+      props = ['totalVaccionations','peopleVaccinated','peopleFullyVaccinated']
     }
 
     let result = props.map(property => {
@@ -27,7 +31,7 @@ export class CountryPipe implements PipeTransform {
         };
       });
       return {
-        name: property,
+        name: this.translateService.instant('country-properties.'+property),
         series: series
       }
     });

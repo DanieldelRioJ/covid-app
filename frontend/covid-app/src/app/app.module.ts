@@ -10,7 +10,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GeneralComponent } from './general/general.component';
 import { CountryComponent } from './country/country.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GeneralHeaderComponent } from './general/general-header/general-header.component';
@@ -33,6 +33,9 @@ import { CookiesAdvertisementComponent } from './cookies-advertisement/cookies-a
 import { NumberFomatPipe } from './custom-pipes/number-fomat.pipe';
 import { PolicyComponent } from './policy/policy.component';
 import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CountryNameTranslatorPipe } from './custom-pipes/country-name-translator/country-name-translator.pipe';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
     CookiesAdvertisementComponent,
     NumberFomatPipe,
     PolicyComponent,
-    CountryPipe
+    CountryPipe,
+    CountryNameTranslatorPipe
   ],
   imports: [
     BrowserModule,
@@ -69,9 +73,22 @@ import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
     MatInputModule,
     MatTooltipModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [],
+  providers: [CountryNameTranslatorPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

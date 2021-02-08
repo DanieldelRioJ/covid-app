@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Country} from "../model/country";
 import {VaccinationSeries} from "../model/vaccination-series";
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-country',
@@ -21,11 +22,11 @@ export class CountryComponent implements OnInit {
 
   constructor(private countryService: CountryService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private translate: TranslateService,) {
     route.params.subscribe(parameters => {
       let countryIdentifier = parameters['countryIdentifier'];
       let subscription = countryService.getCountry(countryIdentifier).subscribe(country => {
-        debugger;
         this.country = country;
         this.yesterdayData = this.country.vaccineSeries[this.country.vaccineSeries.length - 2];
         this.todayData = this.country.lastVaccineSeries;

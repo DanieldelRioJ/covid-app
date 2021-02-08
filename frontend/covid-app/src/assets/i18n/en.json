@@ -1,0 +1,72 @@
+{
+  "title": "Realtime COVID-19 Vaccination Data",
+  "country-properties":{
+    "totalVaccinationsPerHundred":"Injected doses (%)",
+    "peopleVaccinatedPerHundred":"Vaccined population (%)",
+    "fullyVaccinatedPerHundred":"Fully vaccinated population (%)",
+    "totalVaccionations":"Injected doses",
+    "peopleVaccinated":"Vaccined population",
+    "peopleFullyVaccinated":"Personas totalmente vacunadas",
+    "dailyVaccionations":"Fully vaccinated population"
+  },
+  "pages":{
+    "countries":{
+      "full-data":{
+        "title": "Full data",
+        "vaccinesUsed": "Vaccines used"
+      },
+      "charts": {
+        "vaccinations%": "Vaccinations (%)",
+        "vaccinations": {
+          "title": "Vaccinations (absolute numbers)",
+          "yLabel": "People vaccinated"
+        },
+        "dailyVaccinations": "Daily vaccinations"
+      }
+    },
+    "general":{
+      "top-10":{
+        "title": "Top 10 Countries",
+        "subtitle": "Based on % vaccinated people with first dosis",
+        "columns": {
+          "name": "Name",
+          "vaccinated": "Vaccinated"
+        }
+      },
+      "vaccines": {
+        "title": "Number of countries per vaccine"
+      },
+      "country-chart": {
+        "title": "Cov-19 Country vaccinations",
+        "subtitle": "Based on % vaccinated people with first dosis",
+        "yLabel": "% people vaccinated"
+      }
+    }
+  },
+  "components":{
+    "search-bar":{
+      "placeholder": "Search your country",
+      "button": "Search"
+    },
+    "header":{
+      "title": "World Data",
+      "vaccinated": "Vaccinated",
+      "fullyVaccinated": "Fully vaccinated",
+      "vaccinatedToday": "Vaccinated today"
+    },
+    "footer":{
+      "cookies-policy": "Cookies policy"
+    },
+    "privacy-advertisement":{
+      "title": "Cookies policy",
+      "description": "If you continue browsing you are accepting our"
+    }
+  },
+  "util":{
+    "legend":"Legend",
+    "back":"Back",
+    "accept":"Aceptar",
+    "source":"Source",
+    "thanYesterday": "than yesterday"
+  }
+}

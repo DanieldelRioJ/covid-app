@@ -1,0 +1,72 @@
+{
+  "title": "Datos en tiempo real de la vacunación contra el COVID-19",
+  "country-properties": {
+    "totalVaccinationsPerHundred": "Dosis administradas (%)",
+    "peopleVaccinatedPerHundred": "Población vacunada (%)",
+    "fullyVaccinatedPerHundred": "Población totalmente vacunada (%)",
+    "totalVaccionations": "Dosis administradas",
+    "peopleVaccinated": "Personas vacunadas",
+    "peopleFullyVaccinated": "Personas totalmente vacunadas",
+    "dailyVaccionations": "Personas totalmente vacunadas"
+  },
+  "pages":{
+    "countries":{
+      "full-data":{
+        "title": "Datos completos",
+        "vaccinesUsed": "Vacunas utilizadas"
+      },
+      "charts": {
+        "vaccinations%": "Vacunaciones (%)",
+        "vaccinations": {
+          "title": "Vacunaciones (números absolutos)",
+          "yLabel": "Personas vacunadas"
+        },
+        "dailyVaccinations": "Vacunaciones diarias"
+      }
+    },
+    "general":{
+      "top-10":{
+        "title": "Top 10 - Países",
+        "subtitle": "Basado en el % de personas vacunadas con la primera dosis",
+        "columns": {
+          "name": "Nombre",
+          "vaccinated": "Vacunados"
+        }
+      },
+      "vaccines": {
+        "title": "Número de países por vacuna"
+      },
+      "country-chart": {
+        "title": "Cov-19 Vacunaciones por país",
+        "subtitle": "Basado en el % de personas vacunadas con la primera dosis",
+        "yLabel": "% de personas vacunadas"
+      }
+    }
+  },
+  "components":{
+    "search-bar":{
+      "placeholder": "Busca tu país",
+      "button": "Buscar"
+    },
+    "header":{
+      "title": "Datos del mundo",
+      "vaccinated": "Vacunados",
+      "fullyVaccinated": "Totalmente vacunados",
+      "vaccinatedToday": "Vacunados hoy"
+    },
+    "footer":{
+      "cookies-policy": "Política de cookies"
+    },
+    "privacy-advertisement":{
+      "title": "Política de cookies",
+      "description": "Si continuas navegando, aceptas nuestra"
+    }
+  },
+  "util":{
+    "legend":"Leyenda",
+    "back":"Volver",
+    "accept":"Aceptar",
+    "source":"Fuente",
+    "thanYesterday": "que ayer"
+  }
+}

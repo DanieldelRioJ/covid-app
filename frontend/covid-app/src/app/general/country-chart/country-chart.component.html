@@ -3,6 +3,8 @@
                          [scheme]="'vivid'"
                          [schemeType]="'ordinal'"
                          [legend]="legend"
+                         [legendTitle]="legendTitle"
+                         [xAxisTickFormatting]="dateTickFormatting"
                          [showXAxisLabel]="showXAxisLabel"
                          [showYAxisLabel]="showYAxisLabel"
                          [legendPosition]="legendPosition"
@@ -11,9 +13,6 @@
                          [xAxisLabel]="xAxisLabel"
                          [yAxisLabel]="yAxisLabel"
                          [results]="data"
-                         (select)="onSelect($event)"
-                         (activate)="onActivate($event)"
-                         (deactivate)="onDeactivate($event)"
   >
   </ngx-charts-line-chart>
 </div>

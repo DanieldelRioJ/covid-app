@@ -1,46 +1,49 @@
 <div class="country-container container-fluid">
-  <button mat-raised-button class="back-button" routerLink="/"><fa-icon [icon]="faArrowLeft" style="margin-right: 0.3rem"></fa-icon>Back</button>
+  <button mat-raised-button class="back-button" routerLink="/"><fa-icon [icon]="faArrowLeft" style="margin-right: 0.3rem"></fa-icon>{{'util.back' | translate}}</button>
   <div class="row">
     <div class="col-lg-9 col-12" style="margin-bottom: 1rem">
-      <app-general-header [headerText]="country?.name" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
+      <app-general-header [headerText]="country | countryNameTranslator" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
       <mat-card style="margin: 1.5rem 0rem">
-        <app-country-chart class="chart" [data]="country| country:'%'"></app-country-chart>
-        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
+        <h2>{{'pages.countries.charts.vaccinations%'| translate}}</h2>
+        <app-country-chart class="chart" [data]="country| country:'%'" xAxisLabel="" [yAxisLabel]="'pages.general.country-chart.yLabel'|translate"></app-country-chart>
+        <p class="source">{{'util.source' | translate }}: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
       <mat-card style="margin: 1.5rem 0rem">
-        <app-country-chart class="chart" [data]="country| country:'abs'"></app-country-chart>
-        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
+        <h2>{{'pages.countries.charts.dailyVaccinations'| translate}}</h2>
+        <app-country-chart class="chart" [data]="country| country:'daily'" xAxisLabel="" yAxisLabel=""></app-country-chart>
+        <p class="source">{{'util.source' | translate }}: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
       <mat-card style="margin: 1.5rem 0rem">
-        <app-country-chart class="chart" [data]="country| country:'daily'"></app-country-chart>
-        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
+        <h2>{{'pages.countries.charts.vaccinations.title'| translate}}</h2>
+        <app-country-chart class="chart" [data]="country| country:'abs'" xAxisLabel="" [yAxisLabel]="'pages.countries.charts.vaccinations.yLabel'|translate"></app-country-chart>
+        <p class="source">{{'util.source' | translate }}: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
     </div>
     <div class="col-lg-3 col-12">
       <mat-card>
-        <h2>Full data</h2>
+        <h2>{{'pages.countries.full-data.title' |translate}}</h2>
         <div class="detail-list">
           <div class="detail-item">
-            <p>Total vaccinations</p>
+            <p>{{'country-properties.totalVaccionations' | translate}}</p>
             <p>{{country?.lastVaccineSeries.totalVaccionations | numberFomat}}</p>
           </div>
           <div class="detail-item">
-            <p>People vaccinated</p>
+            <p>{{'country-properties.peopleVaccinated' | translate}}</p>
             <p>{{country?.lastVaccineSeries.peopleVaccinated | numberFomat}}</p>
           </div>
           <div class="detail-item">
-            <p>People fully vaccinated</p>
+            <p>{{'country-properties.peopleFullyVaccinated' | translate}}</p>
             <p>{{country?.lastVaccineSeries.peopleFullyVaccinated | numberFomat}}</p>
           </div>
         </div>
         <hr style="margin: 0; margin-bottom: 5px">
-        <b>Vaccines used:</b>
+        <b>{{'pages.countries.full-data.vaccinesUsed' |translate}}:</b>
         <ul>
           <li *ngFor="let vaccines of country?.vaccines">{{vaccines.name}}</li>
         </ul>
 
         <hr style="margin: 0; margin-bottom: 5px">
-        Source: <a href="{{country?.sourceWebsite}}" target="_blank">{{country?.sourceName}}</a>
+        {{'util.source' | translate}}: <a href="{{country?.sourceWebsite}}" target="_blank">{{country?.sourceName}}</a>
       </mat-card>
     </div>
   </div>

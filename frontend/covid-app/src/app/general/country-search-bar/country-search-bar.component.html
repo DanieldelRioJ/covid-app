@@ -1,13 +1,13 @@
 <form [formGroup]="searchCountryFormGroup" (ngSubmit)="searchCountry()">
   <div class="search-country">
     <fa-icon [icon]="faSearch" size="lg"></fa-icon>
-    <input style="border: none;" placeholder="Search your country" matInput formControlName="countryName" [matAutocomplete]="auto"/>
+    <input style="border: none;" [placeholder]="'components.search-bar.placeholder' | translate" matInput formControlName="countryName" [matAutocomplete]="auto"/>
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredCountries | async" [value]="option.name">
+      <mat-option *ngFor="let option of filteredCountries | async" [value]="option | countryNameTranslator">
         <img src="/assets/flags/icons/{{option.isoCode | lowercase}}.gif" alt="" style="margin-right: 5px">
-        {{option.name}}
+        {{option | countryNameTranslator}}
       </mat-option>
     </mat-autocomplete>
-    <button type="submit" mat-stroked-button color="primary" [disabled]="!searchCountryFormGroup.valid">Search</button>
+    <button type="submit" mat-stroked-button color="primary" [disabled]="!searchCountryFormGroup.valid">{{'components.search-bar.button' | translate}}</button>
   </div>
 </form>

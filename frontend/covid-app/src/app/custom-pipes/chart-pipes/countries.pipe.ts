@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Country} from "../../model/country";
 import * as moment from 'moment';
+import {CountryNameTranslatorPipe} from "../country-name-translator/country-name-translator.pipe";
 
 @Pipe({
   name: 'countries'
 })
 export class CountriesPipe implements PipeTransform {
 
-  constructor() {
+  constructor(private countryNameTranslator: CountryNameTranslatorPipe) {
   }
 
 
@@ -23,7 +24,7 @@ export class CountriesPipe implements PipeTransform {
         };
       });
       return {
-        name: country.name,
+        name: this.countryNameTranslator.transform(country),
         series: series
       }
     });

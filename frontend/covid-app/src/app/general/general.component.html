@@ -1,14 +1,15 @@
 <div class="container-fluid general-container">
-  <h1 class="title">Realtime Covid-19 Vaccination Data</h1>
+  <h1 class="title">{{'title' | translate}}</h1>
   <app-country-search-bar class="search-bar"></app-country-search-bar>
   <div class="row">
     <div class="col-lg-8 col-12">
-      <app-general-header class="header-info" headerText="World Data" [todaySerie]="todayWorldSerie"
+      <app-general-header class="header-info" [headerText]="'components.header.title' | translate" [todaySerie]="todayWorldSerie"
                           [yesterdaySerie]="yesterdayWorldSerie" style="margin-bottom: 1.5rem; display: block;"></app-general-header>
       <mat-card style="margin-bottom: 1.5rem">
-        <h2>Cov-19 Country vaccinations</h2>
-        <app-country-chart class="chart" [data]="countries | countries:'peopleVaccinatedPerHundred'"></app-country-chart>
-        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
+        <h2>{{'pages.general.country-chart.title' | translate}}</h2>
+        <app-country-chart class="chart" [data]="countries | countries:'peopleVaccinatedPerHundred'"
+                           xAxisLabel="" [yAxisLabel]="'pages.general.country-chart.yLabel'|translate"></app-country-chart>
+        <p class="source">{{'util.source' | translate }}: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
 
     </div>
@@ -17,7 +18,7 @@
         <app-country-table [countries]="countries"></app-country-table>
       </mat-card>
       <mat-card>
-        <h2 matTooltip="Number of countries in which each vaccine is used">Countries per vaccine</h2>
+        <h2 matTooltip="Number of countries in which each vaccine is used">{{'pages.general.vaccines.title' | translate}}</h2>
         <app-vaccine-chart class="vaccine-chart" [vaccines]="vaccines"></app-vaccine-chart>
       </mat-card>
     </div>
