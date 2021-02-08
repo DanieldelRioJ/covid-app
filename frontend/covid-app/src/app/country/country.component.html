@@ -4,7 +4,15 @@
     <div class="col-lg-9 col-12" style="margin-bottom: 1rem">
       <app-general-header [headerText]="country?.name" [yesterdaySerie]="yesterdayData" [todaySerie]="todayData" [isoCode]="country?.isoCode"></app-general-header>
       <mat-card style="margin: 1.5rem 0rem">
-        <app-country-chart class="chart" [data]="[country] | countries:'peopleVaccinatedPerHundred'"></app-country-chart>
+        <app-country-chart class="chart" [data]="country| country:'%'"></app-country-chart>
+        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
+      </mat-card>
+      <mat-card style="margin: 1.5rem 0rem">
+        <app-country-chart class="chart" [data]="country| country:'abs'"></app-country-chart>
+        <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
+      </mat-card>
+      <mat-card style="margin: 1.5rem 0rem">
+        <app-country-chart class="chart" [data]="country| country:'daily'"></app-country-chart>
         <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
     </div>

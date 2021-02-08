@@ -37,6 +37,7 @@ public class Country {
     private String sourceWebsite;
 
     @OneToMany(mappedBy = "country", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
+    @OrderBy("date ASC")
     @JsonIgnoreProperties(value = "country")
     private List<VaccinationSeries> vaccineSeries;
 

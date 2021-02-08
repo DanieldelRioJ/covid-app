@@ -32,6 +32,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CookiesAdvertisementComponent } from './cookies-advertisement/cookies-advertisement.component';
 import { NumberFomatPipe } from './custom-pipes/number-fomat.pipe';
 import { PolicyComponent } from './policy/policy.component';
+import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PolicyComponent } from './policy/policy.component';
     FooterComponent,
     CookiesAdvertisementComponent,
     NumberFomatPipe,
-    PolicyComponent
+    PolicyComponent,
+    CountryPipe
   ],
   imports: [
     BrowserModule,

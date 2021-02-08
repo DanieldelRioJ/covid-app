@@ -25,9 +25,12 @@ export class CountryComponent implements OnInit {
     route.params.subscribe(parameters => {
       let countryIdentifier = parameters['countryIdentifier'];
       let subscription = countryService.getCountry(countryIdentifier).subscribe(country => {
+        debugger;
         this.country = country;
         this.yesterdayData = this.country.vaccineSeries[this.country.vaccineSeries.length - 2];
-        this.todayData = this.country.vaccineSeries[this.country.vaccineSeries.length - 1];
+        this.todayData = this.country.lastVaccineSeries;
+        console.log(this.yesterdayData)
+        console.log(this.todayData)
       }, error => {
         router.navigateByUrl('/404');
       }, () => {subscription.unsubscribe()});

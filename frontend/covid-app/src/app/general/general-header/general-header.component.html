@@ -10,16 +10,16 @@
       <fa-icon [icon]="faSyringe" size="2x" style="align-self: center; margin-right: 0.5rem" class="hide-mobile"></fa-icon>
       <div class="content">
         <p class="title" matTooltip="People vaccinated (at least 1 dosis) per hundred" matTooltipPosition="above">Vaccinated</p>
-        <h3 class="value">{{todaySerie?.peopleVaccinatedPerHundred}}%</h3>
-        <p class="subcaption" matTooltip="Percentage increase since previous day"><span class="positive">+{{todaySerie?.peopleVaccinatedPerHundred - yesterdaySerie?.peopleVaccinatedPerHundred | number : '1.2-3'}}%</span> than yesterday</p>
+        <h3 class="value">{{todaySerie?.peopleVaccinatedPerHundred ||'-'}}%</h3>
+        <p class="subcaption" matTooltip="Percentage increase since previous day" *ngIf="todaySerie?.peopleVaccinatedPerHundred && yesterdaySerie?.peopleVaccinatedPerHundred"><span class="positive">+{{todaySerie?.peopleVaccinatedPerHundred - yesterdaySerie?.peopleVaccinatedPerHundred | number : '1.2-3'}}%</span> than yesterday</p>
       </div>
       </div>
     <div class="secondary-property property">
       <fa-icon [icon]="faShieldVirus" size="2x" style="align-self: center; margin-right: 0.5rem" class="hide-mobile"></fa-icon>
       <div>
         <p class="title" matTooltip="People fully vaccinated (2 dosis) per hundred" matTooltipPosition="above">Fully vaccinated</p>
-        <h3 class="value">{{todaySerie?.fullyVaccinatedPerHundred}}%</h3>
-        <p class="subcaption" matTooltip="Percentage increase since previous day"><span class="positive">+{{todaySerie?.fullyVaccinatedPerHundred - yesterdaySerie?.fullyVaccinatedPerHundred | number : '1.2-3'}}%</span> than yesterday</p>
+        <h3 class="value">{{todaySerie?.fullyVaccinatedPerHundred ||'-'}}%</h3>
+        <p class="subcaption" matTooltip="Percentage increase since previous day" *ngIf="todaySerie?.fullyVaccinatedPerHundred && yesterdaySerie?.fullyVaccinatedPerHundred"><span class="positive">+{{todaySerie?.fullyVaccinatedPerHundred - yesterdaySerie?.fullyVaccinatedPerHundred | number : '1.2-3'}}%</span> than yesterday</p>
       </div>
     </div>
     <div class="secondary-property hide-mobile property">
@@ -27,7 +27,7 @@
       <div>
         <p class="title" matTooltip="People vaccinated today" matTooltipPosition="above">Vaccinated today</p>
         <h3 class="value">{{todaySerie?.dailyVaccionations | numberFomat}}</h3>
-        <p class="subcaption" matTooltip="Difference with the previous day"><span class="positive" [ngClass]="{'negative' : todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations < 0}">{{todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations | numberFomat}}</span> than yesterday</p>
+        <p class="subcaption" matTooltip="Difference with the previous day" *ngIf="todaySerie?.dailyVaccionations && yesterdaySerie?.dailyVaccionations"><span class="positive" [ngClass]="{'negative' : todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations < 0}">{{(todaySerie?.dailyVaccionations - yesterdaySerie?.dailyVaccionations | numberFomat) ||'-'}}</span> than yesterday</p>
       </div>
       </div>
   </div>

@@ -5,9 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NumberFomatPipe implements PipeTransform {
 
-  transform(value: number): string {
+  transform(value: number, signed?: boolean): string {
     if(value == null) return null;
-    return value.toLocaleString('es');
+    let number = value.toLocaleString('es');
+    if(value >= 0 && signed == true){
+     return '+'+number;
+    }
+    return number;
   }
 
 }
