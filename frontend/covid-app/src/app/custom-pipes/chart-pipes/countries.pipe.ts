@@ -3,9 +3,9 @@ import {Country} from "../../model/country";
 import * as moment from 'moment';
 
 @Pipe({
-  name: 'country'
+  name: 'countries'
 })
-export class CountryPipe implements PipeTransform {
+export class CountriesPipe implements PipeTransform {
 
   constructor() {
   }

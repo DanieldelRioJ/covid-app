@@ -1,8 +1,8 @@
-import { CountryPipe } from './country.pipe';
+import { CountriesPipe } from './country.pipe';
 
 describe('CountryPipe', () => {
   it('create an instance', () => {
-    const pipe = new CountryPipe();
+    const pipe = new CountriesPipe();
     expect(pipe).toBeTruthy();
   });
 });

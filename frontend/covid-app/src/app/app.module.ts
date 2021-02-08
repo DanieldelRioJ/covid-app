@@ -22,7 +22,7 @@ import {MatInputModule} from "@angular/material/input";
 import { CountryChartComponent } from './general/country-chart/country-chart.component';
 import { VaccineChartComponent } from './general/vaccine-chart/vaccine-chart.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
+import { CountriesPipe } from './custom-pipes/chart-pipes/countries.pipe';
 import { VaccinePipe } from './custom-pipes/chart-pipes/vaccine.pipe';
 import { IsoCodePipe } from './custom-pipes/isoCode/iso-code.pipe';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -43,7 +43,7 @@ import { PolicyComponent } from './policy/policy.component';
     CountryTableComponent,
     CountryChartComponent,
     VaccineChartComponent,
-    CountryPipe,
+    CountriesPipe,
     VaccinePipe,
     IsoCodePipe,
     CountrySearchBarComponent,

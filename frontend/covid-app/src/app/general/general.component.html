@@ -7,7 +7,7 @@
                           [yesterdaySerie]="yesterdayWorldSerie" style="margin-bottom: 1.5rem; display: block;"></app-general-header>
       <mat-card style="margin-bottom: 1.5rem">
         <h2>Cov-19 Country vaccinations</h2>
-        <app-country-chart class="chart" [countries]="countries"></app-country-chart>
+        <app-country-chart class="chart" [data]="countries | countries:'peopleVaccinatedPerHundred'"></app-country-chart>
         <p class="source">Source: <a href="https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations" target="_blank">Our World in Data</a></p>
       </mat-card>
 
