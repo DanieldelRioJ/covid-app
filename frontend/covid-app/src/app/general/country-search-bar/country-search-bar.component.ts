@@ -45,7 +45,7 @@ export class CountrySearchBarComponent implements OnInit {
   searchCountry() {
     let countryName = this.searchCountryFormGroup.value.countryName;
     let countryChoosen = this.countryNames.filter(country => {
-      return this.countryNameTranslator.transform(country) == countryName
+      return this.countryNameTranslator.transform(country).toLowerCase() == countryName.toLowerCase()
     })
     if(countryChoosen.length > 0){
       countryName = countryChoosen[0].name;

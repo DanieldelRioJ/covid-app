@@ -36,6 +36,8 @@ import { CountryPipe } from './custom-pipes/chart-pipes/country.pipe';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CountryNameTranslatorPipe } from './custom-pipes/country-name-translator/country-name-translator.pipe';
+import { SpinnerContainerComponent } from './general/spinner-container/spinner-container.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { CountryNameTranslatorPipe } from './custom-pipes/country-name-translato
     NumberFomatPipe,
     PolicyComponent,
     CountryPipe,
-    CountryNameTranslatorPipe
+    CountryNameTranslatorPipe,
+    SpinnerContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { CountryNameTranslatorPipe } from './custom-pipes/country-name-translato
     MatTooltipModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

@@ -1,18 +1,21 @@
-<div class="inner-container">
-  <ngx-charts-line-chart style="display: block"
-                         [scheme]="'vivid'"
-                         [schemeType]="'ordinal'"
-                         [legend]="legend"
-                         [legendTitle]="legendTitle"
-                         [xAxisTickFormatting]="dateTickFormatting"
-                         [showXAxisLabel]="showXAxisLabel"
-                         [showYAxisLabel]="showYAxisLabel"
-                         [legendPosition]="legendPosition"
-                         [xAxis]="xAxis"
-                         [yAxis]="yAxis"
-                         [xAxisLabel]="xAxisLabel"
-                         [yAxisLabel]="yAxisLabel"
-                         [results]="data"
-  >
-  </ngx-charts-line-chart>
-</div>
+<app-spinner-container [loading]="data == null">
+  <div class="inner-container">
+    <ngx-charts-line-chart style="display: block"
+                           [scheme]="'vivid'"
+                           [schemeType]="'ordinal'"
+                           [legend]="legend"
+                           [legendTitle]="legendTitle"
+                           [xAxisTickFormatting]="dateTickFormatting"
+                           [showXAxisLabel]="showXAxisLabel"
+                           [showYAxisLabel]="showYAxisLabel"
+                           [legendPosition]="legendPosition"
+                           [xAxis]="xAxis"
+                           [yAxis]="yAxis"
+                           [xAxisLabel]="xAxisLabel"
+                           [yAxisLabel]="yAxisLabel"
+                           [results]="data"
+    >
+    </ngx-charts-line-chart>
+  </div>
+</app-spinner-container>
+

@@ -16,6 +16,8 @@ export class AppComponent {
     let lang = navigator.language.split("-")[0];
     if(this.availableLangs.filter(l => lang == l).length > 0){
       translate.use(lang);
+    }else{
+      translate.use('en');
     }
     document.documentElement.lang = this.translate.currentLang;
   }
